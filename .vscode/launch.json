@@ -1,0 +1,16 @@
+{
+    // launch.json
+    "version": "0.0.1",
+    "configurations": [
+      {
+        "name": "Federico Viceconti's website",
+        "type": "dart",
+        "request": "launch",
+        "program": "lib/environment/main.dart",
+        "args": [
+          "-d",
+          "chrome"
+        ]
+      }
+    ]
+  }
