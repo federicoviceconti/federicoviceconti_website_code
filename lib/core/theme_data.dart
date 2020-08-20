@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class CustomThemeData {
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
+    visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: TextTheme(
       headline4: TextStyle(
         color: Colors.black,

@@ -9,7 +9,7 @@
         "program": "lib/environment/main.dart",
         "args": [
           "-d",
-          "chrome"
+          "chrome",
         ]
       }
     ]
