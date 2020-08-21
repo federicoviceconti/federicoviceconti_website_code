@@ -19,29 +19,40 @@ class ShapeBackgroundWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: _positionTriangleWithCoordinates(coordinates),
+      children: _positionTriangleWithCoordinates(coordinates, MediaQuery.of(context).size),
     );
   }
 
   List<Widget> _positionTriangleWithCoordinates(
-      List<List<double>> coordinates) {
+      List<List<double>> coordinates, Size screenSize) {
     return Iterable<int>.generate(coordinates.length).toList().map((index) {
       final x = coordinates[index][0];
       final y = coordinates[index][1];
-      final deltaTimeMillis = 100 - Random().nextInt(100);
-      final radius = Random().nextInt(300);
       
+      final deltaTimeMillis = _getDeltaTimeMillis();
       return ShapePositionedWidget(
         moveShape: movingShape,
         x: x,
         y: y,
-        radius: radius,
-        deltaTheta: 0.01,
+        radius: _getRadius(screenSize),
         deltaTimeMillis: deltaTimeMillis,
+        deltaTheta: 0.004,
         shapeType: _getShapeType(index),
         shapeStyle: index % 3 == 0 ? PaintingStyle.stroke : PaintingStyle.fill,
       );
     }).toList();
+  }
+
+  int _getRadius(Size screenSize) {
+    final minRadius = screenSize.width ~/ 10;
+    final maxRadius = screenSize.width.toInt();
+    return minRadius + Random().nextInt(maxRadius - minRadius);
+  }
+
+  int _getDeltaTimeMillis() {
+    final minDeltaMillis = 80;
+    final maxDeltaMillis = 100;
+    return minDeltaMillis + Random().nextInt(maxDeltaMillis - minDeltaMillis);
   }
 
   ShapePainterType _getShapeType(int index) {
