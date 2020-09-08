@@ -1,17 +1,16 @@
-import 'package:federicoviceconti_github_io/home_page/parallax_widget.dart';
-import 'package:federicoviceconti_github_io/home_page/shape_background_widget.dart';
+import 'package:federicoviceconti_github_io/core/full_screen_widget.dart';
+import 'package:federicoviceconti_github_io/home_page/widget/parallax_widget.dart';
+import 'package:federicoviceconti_github_io/home_page/widget/shape_background_widget.dart';
 import 'package:federicoviceconti_github_io/utility/coordinate_helper.dart';
 import 'package:federicoviceconti_github_io/utility/html_utility.dart';
 import 'package:flutter/material.dart';
 
 class HomePageBackgroundWidget extends StatelessWidget {
-  final Size screenSize;
   final bool isDefaultPosition;
   final double localX;
   final double localY;
 
-  HomePageBackgroundWidget(
-    this.screenSize, {
+  HomePageBackgroundWidget({
     this.localX = 0.0,
     this.localY = 0.0,
     this.isDefaultPosition = true,
@@ -25,19 +24,19 @@ class HomePageBackgroundWidget extends StatelessWidget {
   _buildTransform(BuildContext context) {
     final isMobile = HtmlUtility.isMobile();
     
-    final shapeBackgroundChild = Container(
-      width: screenSize.width,
-      height: screenSize.height,
+    final shapeBackgroundChild = FullScreenWidget(
       child: ShapeBackgroundWidget(
         movingShape: isMobile,
         coordinates: CoordinateHelper.getCoordinates(context),
       ),
     );
 
-    return isMobile ? shapeBackgroundChild : _buildParallax(shapeBackgroundChild);
+    return isMobile ? shapeBackgroundChild : _buildParallax(shapeBackgroundChild, context);
   }
 
-  _buildParallax(Widget child) {
+  _buildParallax(Widget child, BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return ParallaxWidget(
       isDefaultPosition: isDefaultPosition,
       percentageX: _getPercentageX(screenSize),

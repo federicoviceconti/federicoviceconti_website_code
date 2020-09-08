@@ -129,9 +129,13 @@ class _ShapePositionedWidgetState extends State<ShapePositionedWidget> {
   void initState() {
     if(widget.moveShape) {
       Timer.periodic(Duration(milliseconds: widget.deltaTimeMillis), (timer) {
-        setState(() {
-          theta = theta + widget?.deltaTheta ?? 0.0;
-        });
+        if(mounted) {
+          setState(() {
+            theta = theta + widget?.deltaTheta ?? 0.0;
+          });
+        } else {
+          timer.cancel();
+        }
       });
     }
 
