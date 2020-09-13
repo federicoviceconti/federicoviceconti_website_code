@@ -37,9 +37,9 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
       child: Text(
         'About me',
         style: Theme.of(context).textTheme.headline4.copyWith(
-          fontWeight: FontWeight.bold,
-          fontSize: 32,
-        ),
+              fontWeight: FontWeight.bold,
+              fontSize: 32,
+            ),
       ),
     );
   }
@@ -98,8 +98,8 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
           Text(
             header,
             style: Theme.of(context).textTheme.headline4.copyWith(
-              fontSize: 20.0,
-            ),
+                  fontSize: 20.0,
+                ),
           ),
           _buildContent(content)
         ],
@@ -110,14 +110,14 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
   Widget _buildContent(String content) {
     return content != null && content.isNotEmpty
         ? Padding(
-          padding: const EdgeInsets.only(top: 4.0),
-          child: Text(
+            padding: const EdgeInsets.only(top: 4.0),
+            child: Text(
               content ?? '',
               style: Theme.of(context).textTheme.bodyText1.copyWith(
-                fontSize: 14.0,
-              ),
+                    fontSize: 14.0,
+                  ),
             ),
-        )
+          )
         : SizedBox();
   }
 
@@ -128,7 +128,8 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
         _buildHeadingSectionWithLine('Experience'),
         _buildSectionContent(
           header: 'Mobile Developer @ NTT Data Italia',
-          content: '''Working in Mobile&Creative Technology. Clients: Enel X, Poste Italiane.
+          content:
+              '''Working in Mobile&Creative Technology. Clients: Enel X, Poste Italiane.
 Apps developed: JuicePass, YoUrban, ForFriends, NoiDiPoste
 Technologies & Tools: Flutter, Android w/ Java, Xamarin, Git, Jenkins, Jira''',
         ),
@@ -148,12 +149,14 @@ Technologies & Tools: Android w/ Java, React.Js, React Native''',
         _buildHeadingSectionWithLine('Education'),
         _buildSectionContent(
           header: 'Post degree master @ ELIS College',
-          content: '''Thesis topic: Developing a web app with React.js and .NET infrastructure.
+          content:
+              '''Thesis topic: Developing a web app with React.js and .NET infrastructure.
 Main subjects: Java SE 8, Java EE, Front-end and back-end frameworks, Mobile, Adobe Suite, UML and design patterns.''',
         ),
         _buildSectionContent(
           header: 'Computer Engineering Degree @ Uninettuno University',
-          content: '''Main subjects: calculus, linear algebra, computer architecture, fundamentals of computer programming, structured and object-oriented programming, software engineering''',
+          content:
+              '''Main subjects: calculus, linear algebra, computer architecture, fundamentals of computer programming, structured and object-oriented programming, software engineering''',
         ),
       ],
     );
