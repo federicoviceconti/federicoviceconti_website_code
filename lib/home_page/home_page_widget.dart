@@ -90,42 +90,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   Widget _buildTopBar() {
-    return Consumer<AppThemeNotifier>(
-      builder: (context, appThemeNotifier, child) {
-        return Container(
-          padding: const EdgeInsets.only(top: 32),
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: _buildShadowColor(appThemeNotifier),
-                blurRadius: 4,
-                spreadRadius: 4,
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Container(
+      color: Theme.of(context).colorScheme.background,
+      padding: const EdgeInsets.only(top: 32),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _buildLogo(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              _buildLogo(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  _buildNavButton('About me', page: PageEnum.aboutMe),
-                  SizedBox(width: 20.0),
-                  _buildSwitchTheme(),
-                  SizedBox(width: 20.0),
-                ],
-              ),
+              _buildNavButton('About me', page: PageEnum.aboutMe),
+              SizedBox(width: 20.0),
+              _buildSwitchTheme(),
+              SizedBox(width: 20.0),
             ],
           ),
-        );
-      },
+        ],
+      ),
     );
-  }
-
-  /// Adding this metohd for a bug with flutter Shadow ThemeData color
-  _buildShadowColor(AppThemeNotifier appThemeNotifier) {
-    return appThemeNotifier.currentAppTheme == ThemeMode.dark ? Colors.transparent : Colors.white;
   }
 
   Widget _buildNavButton(String text, {PageEnum page}) {
