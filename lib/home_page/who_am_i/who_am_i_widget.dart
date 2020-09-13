@@ -26,8 +26,13 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
   Widget _buildWhoAmI() {
     return Container(
       alignment: Alignment.centerLeft,
-      padding: const EdgeInsets.only(left: 20.0),
-      child: _buildWelcomeText(32),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildWelcomeText(32),
+        ],
+      ),
     );
   }
 
@@ -52,7 +57,7 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
       opacity: _mailOpacity,
       duration: Duration(milliseconds: 100),
       child: Container(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.only(bottom: 20.0),
         alignment: Alignment.bottomLeft,
         child: GestureDetector(
           onTap: _onTapMail,
@@ -86,8 +91,8 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
         opacity: _copyClipboardOpacity,
         duration: Duration(milliseconds: 300),
         child: FullScreenWidget(
-          padding: const EdgeInsets.all(20.0),
-          alignment: Alignment.bottomRight,
+          padding: const EdgeInsets.only(bottom: 20.0),
+          alignment: Alignment.bottomLeft,
           child: RichText(
             textAlign: TextAlign.right,
             text: TextSpan(

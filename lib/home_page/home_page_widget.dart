@@ -1,6 +1,8 @@
 import 'package:federicoviceconti_github_io/core/base_widget.dart';
 import 'package:federicoviceconti_github_io/core/full_screen_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/about_me/about_me.dart';
+import 'package:federicoviceconti_github_io/home_page/contact_me/contact_me_widget.dart';
+import 'package:federicoviceconti_github_io/home_page/page_enum.dart';
 import 'package:federicoviceconti_github_io/home_page/who_am_i/who_am_i_widget.dart';
 import 'package:federicoviceconti_github_io/notifier/app_theme_notifier.dart';
 import 'package:federicoviceconti_github_io/utility/html_utility.dart';
@@ -20,7 +22,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   double _localY = 0.0;
   double _offsetX = 0.0;
   double _offsetY = 0.0;
-  final PageController _pageController = PageController(initialPage: 0);
+  PageEnum _pageSelected = PageEnum.home;
+  final PageController _pageController =
+      PageController(initialPage: PageEnum.home.pageIndex);
+  final double _paddingHorizontal = 28.0;
 
   @override
   void initState() {
@@ -39,13 +44,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       children: [
         _buildBackground(),
         FullScreenWidget(
-          child: PageView(
-            physics: NeverScrollableScrollPhysics(),
-            controller: _pageController,
-            children: [
-              WhoAmIWidget(),
-              AboutMeWidget()
-            ],
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: _paddingHorizontal),
+            child: PageView(
+              physics: NeverScrollableScrollPhysics(),
+              controller: _pageController,
+              children: [WhoAmIWidget(), AboutMeWidget(), ContactMeWidget()],
+            ),
           ),
         ),
         _buildTopBar(),
@@ -85,40 +90,114 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   Widget _buildTopBar() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        _buildAboutMe(),
-        _buildSwitchTheme(),
-      ],
-    );
-  }
-
-  Widget _buildAboutMe() {
-    return GestureDetector(
-      onTap: () => _animateToPage(1),
-      child: Text(
-        "About me",
-        style: Theme.of(context).textTheme.bodyText1,
+    return Container(
+      padding: const EdgeInsets.only(top: 32),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Theme.of(context).colorScheme.background,
+            blurRadius: 4,
+            spreadRadius: 4,
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _buildLogo(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              _buildNavButton('About me', page: PageEnum.aboutMe),
+              SizedBox(width: 20.0),
+              _buildSwitchTheme(),
+              SizedBox(width: 20.0),
+            ],
+          ),
+        ],
       ),
     );
   }
 
-  _animateToPage(page) {
-    _pageController.animateToPage(page, duration: Duration(milliseconds: 500), curve: Curves.ease);
+  Widget _buildNavButton(String text, {PageEnum page}) {
+    return GestureDetector(
+      onTap: () => _animateToPage(page),
+      child: Wrap(
+        children: [
+          Column(
+            children: [
+              Text(
+                text,
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              SizedBox(
+                height: 4.0,
+              ),
+              _buildUnderlineNav(
+                conditionToShow: _pageSelected == page,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  _buildUnderlineNav({bool conditionToShow}) {
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 200),
+      width: conditionToShow ? 40.0 : 0.0,
+      height: conditionToShow ? 1.0 : 0.0,
+      curve: Curves.easeIn,
+      child: Container(
+        color: Theme.of(context).colorScheme.primary,
+      ),
+    );
+  }
+
+  _animateToPage(PageEnum page) {
+    _pageController.animateToPage(page.pageIndex,
+        duration: Duration(milliseconds: 500), curve: Curves.ease);
+
+    setState(() {
+      _pageSelected = page;
+    });
   }
 
   Widget _buildSwitchTheme() {
-    return Container(
-      padding: const EdgeInsets.all(32.0),
-      child: IconButton(
-        color: Theme.of(context).iconTheme.color,
-        onPressed: _onSwitchThemePress,
-        icon: Icon(Icons.brightness_4),
-      ),
+    return IconButton(
+      color: Theme.of(context).iconTheme.color,
+      onPressed: _onSwitchThemePress,
+      icon: Icon(Icons.brightness_4),
     );
   }
 
   void _onSwitchThemePress() =>
       Provider.of<AppThemeNotifier>(context, listen: false).switchAppTheme();
+
+  _buildLogo() {
+    return Padding(
+      padding: EdgeInsets.only(left: _paddingHorizontal),
+      child: GestureDetector(
+        onTap: () => _animateToPage(PageEnum.home),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 4),
+          decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            border: Border.all(
+                color: Theme.of(context).colorScheme.primary,
+                style: BorderStyle.solid,
+                width: 2),
+          ),
+          child: Text(
+            'FV',
+            style: Theme.of(context).textTheme.bodyText1.copyWith(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 26,
+                ),
+          ),
+        ),
+      ),
+    );
+  }
 }

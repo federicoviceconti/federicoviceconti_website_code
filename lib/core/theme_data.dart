@@ -15,10 +15,10 @@ class CustomThemeData {
       ),
     ),
     colorScheme: ColorScheme.light(
-      primary: Colors.white,
-      onPrimary: Colors.white,
-      primaryVariant: Colors.white,
+      primary: Colors.black,
+      onPrimary: Colors.black,
       secondary: Colors.grey,
+      background: Colors.white,
     ),
     iconTheme: IconThemeData(
       color: Colors.black,
@@ -38,10 +38,10 @@ class CustomThemeData {
       )
     ),
     colorScheme: ColorScheme.light(
-      primary: Colors.black,
-      onPrimary: Colors.black,
-      primaryVariant: Colors.black,
+      primary: Colors.white,
+      onPrimary: Colors.white,
       secondary: Colors.grey,
+      background: Colors.black,
     ),
     iconTheme: IconThemeData(
       color: Colors.white,
