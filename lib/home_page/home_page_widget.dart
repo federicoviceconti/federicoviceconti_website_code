@@ -2,11 +2,14 @@ import 'package:federicoviceconti_github_io/core/base_widget.dart';
 import 'package:federicoviceconti_github_io/core/full_screen_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/about_me/about_me.dart';
 import 'package:federicoviceconti_github_io/home_page/contact_me/contact_me_widget.dart';
+import 'package:federicoviceconti_github_io/home_page/easter_egg/easter_egg_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/page_enum.dart';
 import 'package:federicoviceconti_github_io/home_page/who_am_i/who_am_i_widget.dart';
+import 'package:federicoviceconti_github_io/home_page/widget/logo_widget.dart';
 import 'package:federicoviceconti_github_io/notifier/app_theme_notifier.dart';
 import 'package:federicoviceconti_github_io/utility/html_utility.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 import 'widget/home_page_background_widget.dart';
@@ -26,6 +29,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   final PageController _pageController =
       PageController(initialPage: PageEnum.home.pageIndex);
   final double _paddingHorizontal = 28.0;
+  int _touchLogo = 10;
+
+  bool get _showEasterEgg => _touchLogo < 1;
 
   @override
   void initState() {
@@ -37,23 +43,47 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return BaseWidget(child: _buildBody());
   }
 
+  Widget _buildOpacityChild(bool condition,
+      {bool hasAnimation = true, Widget child}) {
+    return hasAnimation
+        ? AnimatedOpacity(
+            opacity: condition ? 1 : 0,
+            duration: Duration(
+              milliseconds: 500,
+            ),
+            child: child,
+          )
+        : Opacity(
+            opacity: condition ? 1 : 0,
+            child: child,
+          );
+  }
+
+  Widget _buildSwitcher(bool condition,
+      {Widget childOnTrue, Widget childOnFalse}) {
+    return AnimatedSwitcher(
+      duration: Duration(
+        milliseconds: 500,
+      ),
+      child: condition ? childOnTrue : childOnFalse,
+    );
+  }
+
   Widget _buildBody() {
     final screenSize = MediaQuery.of(context).size;
 
     final stackPages = Stack(
       children: [
         _buildBackground(),
-        FullScreenWidget(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: _paddingHorizontal),
-            child: PageView(
-              physics: NeverScrollableScrollPhysics(),
-              controller: _pageController,
-              children: [WhoAmIWidget(), AboutMeWidget(), ContactMeWidget()],
-            ),
-          ),
+        _buildSwitcher(
+          !_showEasterEgg,
+          childOnTrue: _buildPageWidget(),
+          childOnFalse: _buildEasterEgg()
         ),
-        _buildTopBar(),
+        _buildOpacityChild(
+          !_showEasterEgg,
+          child: _buildTopBar(),
+        ),
       ],
     );
 
@@ -170,26 +200,63 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   _buildLogo() {
     return Padding(
       padding: EdgeInsets.only(left: _paddingHorizontal),
-      child: GestureDetector(
-        onTap: () => _animateToPage(PageEnum.home),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 4),
-          decoration: BoxDecoration(
-            shape: BoxShape.rectangle,
-            border: Border.all(
-                color: Theme.of(context).colorScheme.primary,
-                style: BorderStyle.solid,
-                width: 2),
-          ),
-          child: Text(
-            'FV',
-            style: Theme.of(context).textTheme.bodyText1.copyWith(
-                  fontWeight: FontWeight.normal,
-                  fontSize: 26,
-                ),
-          ),
+      child: LogoWidget(onLogoTap: () => _onLogoTap()),
+    );
+  }
+
+  void _onLogoTap() {
+    if (_pageSelected == PageEnum.home) {
+      _onShowToastAndActiveEasterEgg();
+    } else {
+      _animateToPage(PageEnum.home);
+    }
+  }
+
+  void _onShowToastAndActiveEasterEgg() {
+    if (_touchLogo > 1 && _touchLogo < 7) {
+      _showRemainingStepTouchLogo();
+    } else {
+      _activateEasterEgg();
+    }
+
+    setState(() {
+      _touchLogo--;
+    });
+  }
+
+  void _activateEasterEgg() {}
+
+  void _showRemainingStepTouchLogo() {
+    Fluttertoast.showToast(
+      msg: 'You are now $_touchLogo step away to see the magic',
+      gravity: ToastGravity.BOTTOM,
+      toastLength: Toast.LENGTH_SHORT,
+      backgroundColor: Theme.of(context).colorScheme.primary,
+      webBgColor: Theme.of(context).colorScheme.background == Colors.white
+          ? 'black'
+          : 'white',
+      textColor: Theme.of(context).colorScheme.background == Colors.white
+          ? Colors.white
+          : Colors.black,
+    );
+  }
+
+  Widget _buildPageWidget() {
+    return FullScreenWidget(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: _paddingHorizontal),
+        child: PageView(
+          physics: NeverScrollableScrollPhysics(),
+          controller: _pageController,
+          children: [WhoAmIWidget(), AboutMeWidget(), ContactMeWidget()],
         ),
       ),
+    );
+  }
+
+  _buildEasterEgg() {
+    return FullScreenWidget(
+      child: EasterEggWidget(),
     );
   }
 }
