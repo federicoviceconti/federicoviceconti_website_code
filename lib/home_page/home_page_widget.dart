@@ -91,7 +91,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   Widget _buildTopBar() {
     return Container(
-      color: Theme.of(context).colorScheme.background,
+      color: _pageSelected != PageEnum.home
+          ? Theme.of(context).colorScheme.background
+          : Colors.transparent,
       padding: const EdgeInsets.only(top: 32),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -238,9 +240,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return AnimationHelper.buildSwitcher(
       _showEasterEgg,
       childOnTrue: EasterEggWidget(
-        onLogoTap: () => _onLogoTap(),
+        onLogoTap: () {
+          _onLogoTap();
+          _resetTouchLogo();
+        },
       ),
       childOnFalse: SizedBox(),
     );
+  }
+
+  void _resetTouchLogo() {
+    setState(() {
+      _touchLogo = 10;
+    });
   }
 }

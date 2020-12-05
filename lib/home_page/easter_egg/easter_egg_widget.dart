@@ -30,7 +30,7 @@ class _EasterEggWidgetState extends State<EasterEggWidget> with WidgetsBindingOb
       int incrementTop = 1;
       int incrementLeft = 1;
 
-      _timerMovement = Timer.periodic(Duration(milliseconds: 10), (timer) { 
+      _timerMovement = Timer.periodic(Duration(milliseconds: 5), (timer) { 
         if(_top == maxHeightScreen || _top <= 0) {
           incrementTop = -incrementTop;
         }
