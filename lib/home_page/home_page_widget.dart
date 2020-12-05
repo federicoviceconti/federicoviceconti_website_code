@@ -5,8 +5,10 @@ import 'package:federicoviceconti_github_io/home_page/contact_me/contact_me_widg
 import 'package:federicoviceconti_github_io/home_page/easter_egg/easter_egg_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/page_enum.dart';
 import 'package:federicoviceconti_github_io/home_page/who_am_i/who_am_i_widget.dart';
+import 'package:federicoviceconti_github_io/home_page/widget/cursor_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/widget/logo_widget.dart';
 import 'package:federicoviceconti_github_io/notifier/app_theme_notifier.dart';
+import 'package:federicoviceconti_github_io/utility/animation_helper.dart';
 import 'package:federicoviceconti_github_io/utility/html_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -43,47 +45,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return BaseWidget(child: _buildBody());
   }
 
-  Widget _buildOpacityChild(bool condition,
-      {bool hasAnimation = true, Widget child}) {
-    return hasAnimation
-        ? AnimatedOpacity(
-            opacity: condition ? 1 : 0,
-            duration: Duration(
-              milliseconds: 500,
-            ),
-            child: child,
-          )
-        : Opacity(
-            opacity: condition ? 1 : 0,
-            child: child,
-          );
-  }
-
-  Widget _buildSwitcher(bool condition,
-      {Widget childOnTrue, Widget childOnFalse}) {
-    return AnimatedSwitcher(
-      duration: Duration(
-        milliseconds: 500,
-      ),
-      child: condition ? childOnTrue : childOnFalse,
-    );
-  }
-
   Widget _buildBody() {
     final screenSize = MediaQuery.of(context).size;
 
     final stackPages = Stack(
       children: [
         _buildBackground(),
-        _buildSwitcher(
-          !_showEasterEgg,
-          childOnTrue: _buildPageWidget(),
-          childOnFalse: _buildEasterEgg()
-        ),
-        _buildOpacityChild(
-          !_showEasterEgg,
-          child: _buildTopBar(),
-        ),
+        _buildPageWidget(),
+        _buildTopBar(),
+        _buildEasterEgg(),
       ],
     );
 
@@ -144,23 +114,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget _buildNavButton(String text, {PageEnum page}) {
     return GestureDetector(
       onTap: () => _animateToPage(page),
-      child: Wrap(
-        children: [
-          Column(
-            children: [
-              Text(
-                text,
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
-              SizedBox(
-                height: 4.0,
-              ),
-              _buildUnderlineNav(
-                conditionToShow: _pageSelected == page,
-              ),
-            ],
-          ),
-        ],
+      child: CursorWidget(
+        child: Wrap(
+          children: [
+            Column(
+              children: [
+                Text(
+                  text,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                SizedBox(
+                  height: 4.0,
+                ),
+                _buildUnderlineNav(
+                  conditionToShow: _pageSelected == page,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -187,10 +159,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   Widget _buildSwitchTheme() {
-    return IconButton(
-      color: Theme.of(context).iconTheme.color,
-      onPressed: _onSwitchThemePress,
-      icon: Icon(Icons.brightness_4),
+    return CursorWidget(
+      child: IconButton(
+        color: Theme.of(context).iconTheme.color,
+        onPressed: _onSwitchThemePress,
+        icon: Icon(Icons.brightness_4),
+      ),
     );
   }
 
@@ -198,9 +172,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       Provider.of<AppThemeNotifier>(context, listen: false).switchAppTheme();
 
   _buildLogo() {
-    return Padding(
-      padding: EdgeInsets.only(left: _paddingHorizontal),
-      child: LogoWidget(onLogoTap: () => _onLogoTap()),
+    return AnimationHelper.buildSwitcher(
+      !_showEasterEgg,
+      childOnTrue: Padding(
+        padding: EdgeInsets.only(left: _paddingHorizontal),
+        child: LogoWidget(
+          onLogoTap: () => _onLogoTap(),
+        ),
+      ),
+      childOnFalse: SizedBox(),
     );
   }
 
@@ -254,9 +234,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     );
   }
 
-  _buildEasterEgg() {
-    return FullScreenWidget(
-      child: EasterEggWidget(),
+  Widget _buildEasterEgg() {
+    return AnimationHelper.buildSwitcher(
+      _showEasterEgg,
+      childOnTrue: EasterEggWidget(
+        onLogoTap: () => _onLogoTap(),
+      ),
+      childOnFalse: SizedBox(),
     );
   }
 }
