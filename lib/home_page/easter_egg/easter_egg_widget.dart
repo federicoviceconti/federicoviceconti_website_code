@@ -24,13 +24,13 @@ class _EasterEggWidgetState extends State<EasterEggWidget> with WidgetsBindingOb
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final maxHeightScreen = MediaQuery.of(context).size.height - 40;
-      final maxWidthScreen = MediaQuery.of(context).size.width - 40;
-
       int incrementTop = 1;
       int incrementLeft = 1;
 
-      _timerMovement = Timer.periodic(Duration(milliseconds: 5), (timer) { 
+      _timerMovement = Timer.periodic(Duration(milliseconds: 5), (timer) {
+        final maxHeightScreen = MediaQuery.of(context).size.height - 40;
+        final maxWidthScreen = MediaQuery.of(context).size.width - 40;
+
         if(_top == maxHeightScreen || _top <= 0) {
           incrementTop = -incrementTop;
         }

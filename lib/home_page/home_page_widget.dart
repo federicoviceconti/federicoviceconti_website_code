@@ -22,6 +22,8 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
+  static const int MAX_TOUCH_LOGO = 10;
+
   bool defaultPosition = true;
   double _localX = 0.0;
   double _localY = 0.0;
@@ -31,7 +33,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   final PageController _pageController =
       PageController(initialPage: PageEnum.home.pageIndex);
   final double _paddingHorizontal = 28.0;
-  int _touchLogo = 10;
+  int _touchLogo = MAX_TOUCH_LOGO;
+  DateTime _easterEggStarted;
 
   bool get _showEasterEgg => _touchLogo < 1;
 
@@ -195,18 +198,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   void _onShowToastAndActiveEasterEgg() {
-    if (_touchLogo > 1 && _touchLogo < 7) {
+    if (_touchLogo > 0 && _touchLogo < 7) {
       _showRemainingStepTouchLogo();
-    } else {
-      _activateEasterEgg();
     }
 
     setState(() {
       _touchLogo--;
     });
-  }
 
-  void _activateEasterEgg() {}
+    if (_touchLogo == 0) {
+      setState(() {
+        _easterEggStarted = DateTime.now();
+      });
+    }
+  }
 
   void _showRemainingStepTouchLogo() {
     Fluttertoast.showToast(
@@ -250,8 +255,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   void _resetTouchLogo() {
-    setState(() {
-      _touchLogo = 10;
-    });
+    final now = DateTime.now();
+    final secondsBeforeRestart = 1;
+
+    if (_easterEggStarted == null ||
+        now.difference(_easterEggStarted).inSeconds > secondsBeforeRestart) {
+      setState(() {
+        _touchLogo = MAX_TOUCH_LOGO;
+      });
+    }
   }
 }

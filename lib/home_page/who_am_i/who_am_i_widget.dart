@@ -1,4 +1,5 @@
 import 'package:federicoviceconti_github_io/core/full_screen_widget.dart';
+import 'package:federicoviceconti_github_io/home_page/widget/cursor_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:federicoviceconti_github_io/utility/proportion.dart';
 import 'package:flutter/services.dart';
@@ -61,9 +62,13 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
         alignment: Alignment.bottomLeft,
         child: GestureDetector(
           onTap: _onTapMail,
-          child: Text(
-            "Say hello to viceconti.federico@gmail.com 👋",
-            style: Theme.of(context).textTheme.bodyText1,
+          child: CursorWidget(
+            child: Text(
+              "Say hello to viceconti.federico@gmail.com 👋",
+              style: Theme.of(context).textTheme.bodyText1.copyWith(
+                height: 1.5,
+              ),
+            ),
           ),
         ),
       ),
