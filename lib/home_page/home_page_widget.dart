@@ -9,6 +9,7 @@ import 'package:federicoviceconti_github_io/home_page/widget/cursor_widget.dart'
 import 'package:federicoviceconti_github_io/home_page/widget/logo_widget.dart';
 import 'package:federicoviceconti_github_io/notifier/app_theme_notifier.dart';
 import 'package:federicoviceconti_github_io/utility/animation_helper.dart';
+import 'package:federicoviceconti_github_io/utility/firebase_analytics_helper.dart';
 import 'package:federicoviceconti_github_io/utility/html_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -155,6 +156,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   _animateToPage(PageEnum page) {
+    FirebaseAnalyticsHelper().analytics.setCurrentScreen(screenName: page.toString());
+
     _pageController.animateToPage(page.pageIndex,
         duration: Duration(milliseconds: 500), curve: Curves.ease);
 
@@ -207,6 +210,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     });
 
     if (_touchLogo == 0) {
+      FirebaseAnalyticsHelper().analytics.logEvent(
+        name: FirebaseAnalyticsHelper.EASTER_EGG_FOUND,
+      );
+
       setState(() {
         _easterEggStarted = DateTime.now();
       });

@@ -1,5 +1,6 @@
 import 'package:federicoviceconti_github_io/core/full_screen_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/widget/cursor_widget.dart';
+import 'package:federicoviceconti_github_io/utility/firebase_analytics_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:federicoviceconti_github_io/utility/proportion.dart';
 import 'package:flutter/services.dart';
@@ -76,6 +77,10 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
   }
 
   void _onTapMail() {
+    FirebaseAnalyticsHelper().analytics.logEvent(
+      name: FirebaseAnalyticsHelper.MAIL_HOME_TAP
+    );
+
     Clipboard.setData(ClipboardData(text: "viceconti.federico@gmail.com"));
 
     _showMailWithOpacity(false);
