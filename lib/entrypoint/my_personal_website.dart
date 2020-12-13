@@ -2,6 +2,7 @@ import 'package:federicoviceconti_github_io/core/theme_data.dart';
 import 'package:federicoviceconti_github_io/home_page/home_page_widget.dart';
 import 'package:federicoviceconti_github_io/notifier/app_theme_notifier.dart';
 import 'package:federicoviceconti_github_io/utility/firebase_analytics_helper.dart';
+import 'package:federicoviceconti_github_io/utility/html_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +16,7 @@ class _MyPersonalWebsiteState extends State<MyPersonalWebsite> {
   void initState() {
     super.initState();
     FirebaseAnalyticsHelper().analytics.logAppOpen();
+    HtmlUtility.printAsciiArt();
   }
 
   @override
