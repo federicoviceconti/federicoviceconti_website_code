@@ -50,7 +50,7 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
         top: 16.0,
       ),
       child: Text(
-        'Passionate developer, who never stop learn since I started.',
+        'Passionate developer, who never stop learning since I started.',
         style: Theme.of(context).textTheme.headline4.copyWith(
               fontWeight: FontWeight.w300,
               fontSize: 18,
