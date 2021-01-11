@@ -67,8 +67,8 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
             child: Text(
               "Say hello to viceconti.federico@gmail.com 👋",
               style: Theme.of(context).textTheme.bodyText1.copyWith(
-                height: 1.5,
-              ),
+                    height: 1.5,
+                  ),
             ),
           ),
         ),
@@ -77,9 +77,9 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
   }
 
   void _onTapMail() {
-    FirebaseAnalyticsHelper().analytics.logEvent(
-      name: FirebaseAnalyticsHelper.MAIL_HOME_TAP
-    );
+    FirebaseAnalyticsHelper()
+        .analytics
+        .logEvent(name: FirebaseAnalyticsHelper.MAIL_HOME_TAP);
 
     Clipboard.setData(ClipboardData(text: "viceconti.federico@gmail.com"));
 
