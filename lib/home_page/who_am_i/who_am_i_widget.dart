@@ -4,6 +4,7 @@ import 'package:federicoviceconti_github_io/utility/firebase_analytics_helper.da
 import 'package:flutter/material.dart';
 import 'package:federicoviceconti_github_io/utility/proportion.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WhoAmIWidget extends StatefulWidget {
   @override
@@ -39,8 +40,7 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
   }
 
   Widget _buildWelcomeText(double fontSize) {
-    final welcomeText =
-        "Hello, I'm Federico!\nAndroid developer, Flutter enthusiast.\nFrom Rome, 🇮🇹";
+    final welcomeText = AppLocalizations.of(context).helloIAm;
 
     return Text(
       welcomeText,
@@ -65,7 +65,7 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
           onTap: _onTapMail,
           child: CursorWidget(
             child: Text(
-              "Say hello to viceconti.federico@gmail.com 👋",
+              AppLocalizations.of(context).sayHelloToMail,
               style: Theme.of(context).textTheme.bodyText1.copyWith(
                     height: 1.5,
                   ),
@@ -81,7 +81,7 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
         .analytics
         .logEvent(name: FirebaseAnalyticsHelper.MAIL_HOME_TAP);
 
-    Clipboard.setData(ClipboardData(text: "viceconti.federico@gmail.com"));
+    Clipboard.setData(ClipboardData(text: AppLocalizations.of(context).mail));
 
     _showMailWithOpacity(false);
     _showCopyClipboardWithOpacity(true);
@@ -106,13 +106,13 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
           child: RichText(
             textAlign: TextAlign.right,
             text: TextSpan(
-              text: "viceconti.federico@gmail.com",
+              text: AppLocalizations.of(context).mail,
               style: Theme.of(context).textTheme.bodyText1.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
               children: [
                 TextSpan(
-                  text: " copied 📋",
+                  text: AppLocalizations.of(context).copiedWithEmoji,
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
               ],

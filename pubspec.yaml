@@ -1,7 +1,7 @@
 name: federicoviceconti_github_io
 description: My personal website build in Flutter with ❤️
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 version: 1.0.0+1
 
 environment:
@@ -10,14 +10,20 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter 
+  intl: ^0.16.1
   cupertino_icons: ^0.1.3
   provider: ^4.3.2
   fluttertoast: ^7.1.1
   firebase_analytics: ^6.3.0
-  
+
+dependency_overrides:
+   intl: ^0.17.0-nullsafety.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 flutter:
+  generate: true
   uses-material-design: true

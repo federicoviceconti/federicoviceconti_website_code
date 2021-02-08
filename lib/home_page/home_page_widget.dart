@@ -14,7 +14,7 @@ import 'package:federicoviceconti_github_io/utility/html_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'widget/home_page_background_widget.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -156,7 +156,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   _animateToPage(PageEnum page) {
-    FirebaseAnalyticsHelper().analytics.setCurrentScreen(screenName: page.toString());
+    FirebaseAnalyticsHelper()
+        .analytics
+        .setCurrentScreen(screenName: page.toString());
 
     _pageController.animateToPage(page.pageIndex,
         duration: Duration(milliseconds: 500), curve: Curves.ease);
@@ -211,8 +213,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
     if (_touchLogo == 0) {
       FirebaseAnalyticsHelper().analytics.logEvent(
-        name: FirebaseAnalyticsHelper.EASTER_EGG_FOUND,
-      );
+            name: FirebaseAnalyticsHelper.EASTER_EGG_FOUND,
+          );
 
       setState(() {
         _easterEggStarted = DateTime.now();
@@ -222,7 +224,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   void _showRemainingStepTouchLogo() {
     Fluttertoast.showToast(
-      msg: 'You are now $_touchLogo step away to see the magic',
+      msg: AppLocalizations.of(context)
+          .aboutMe
+          .replaceAll('{0}', _touchLogo.toString()),
       gravity: ToastGravity.BOTTOM,
       toastLength: Toast.LENGTH_SHORT,
       backgroundColor: Theme.of(context).colorScheme.primary,

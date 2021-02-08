@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AboutMeWidget extends StatefulWidget {
   @override
@@ -35,7 +36,7 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
     return Padding(
       padding: const EdgeInsets.only(top: 100.0),
       child: Text(
-        'About me',
+        AppLocalizations.of(context).aboutMe,
         style: Theme.of(context).textTheme.headline4.copyWith(
               fontWeight: FontWeight.bold,
               fontSize: 32,
@@ -50,7 +51,7 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
         top: 16.0,
       ),
       child: Text(
-        'Passionate developer, who never stop learning since I started.',
+        AppLocalizations.of(context).aboutMeSubtitle,
         style: Theme.of(context).textTheme.headline4.copyWith(
               fontWeight: FontWeight.w300,
               fontSize: 18,
@@ -125,18 +126,14 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildHeadingSectionWithLine('Experience'),
+        _buildHeadingSectionWithLine(AppLocalizations.of(context).experience),
         _buildSectionContent(
-          header: 'Mobile Developer @ NTT Data Italia',
-          content:
-              '''Working in Mobile&Creative Technology. Clients: Enel X, Poste Italiane.
-Apps developed: JuicePass, YoUrban, ForFriends, NoiDiPoste
-Technologies & Tools: Flutter, Android w/ Java, Xamarin, Git, Jenkins, Jira''',
+          header: AppLocalizations.of(context).nttExperienceTitle,
+          content: AppLocalizations.of(context).nttExperienceContent,
         ),
         _buildSectionContent(
-          header: 'Software developer @ Vetrya S.p.A.',
-          content: '''Projects: Vision app, Vilast, Corporate Campus App
-Technologies & Tools: Android w/ Java, React.Js, React Native''',
+          header: AppLocalizations.of(context).vetryaExperienceTitle,
+          content: AppLocalizations.of(context).vetryaExperienceContent,
         ),
       ],
     );
@@ -146,17 +143,14 @@ Technologies & Tools: Android w/ Java, React.Js, React Native''',
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildHeadingSectionWithLine('Education'),
+        _buildHeadingSectionWithLine(AppLocalizations.of(context).education),
         _buildSectionContent(
-          header: 'Post degree master @ ELIS College',
-          content:
-              '''Thesis topic: Developing a web app with React.js and .NET infrastructure.
-Main subjects: Java SE 8, Java EE, Front-end and back-end frameworks, Mobile, Adobe Suite, UML and design patterns.''',
+          header: AppLocalizations.of(context).elisCollegeEducationTitle,
+          content: AppLocalizations.of(context).elisCollegeEducationContent,
         ),
         _buildSectionContent(
-          header: 'Computer Engineering Degree @ Uninettuno University',
-          content:
-              '''Main subjects: calculus, linear algebra, computer architecture, fundamentals of computer programming, structured and object-oriented programming, software engineering''',
+          header: AppLocalizations.of(context).universityEducationTitle,
+          content: AppLocalizations.of(context).universityEducationContent,
         ),
       ],
     );
@@ -166,18 +160,18 @@ Main subjects: Java SE 8, Java EE, Front-end and back-end frameworks, Mobile, Ad
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildHeadingSectionWithLine('Certification'),
+        _buildHeadingSectionWithLine(AppLocalizations.of(context).certification),
         _buildSectionContent(
-          header: 'Associate Android Developer, Google / Udacity',
+          header: AppLocalizations.of(context).certificationAndroid,
         ),
         _buildSectionContent(
-          header: 'TOEFL iBT',
+          header: AppLocalizations.of(context).certificationTOEFL,
         ),
         _buildSectionContent(
-          header: 'OCP Java SE 8, Oracle',
+          header: AppLocalizations.of(context).certificationOCP,
         ),
         _buildSectionContent(
-          header: 'OCA Java SE 8, Oracle',
+          header: AppLocalizations.of(context).certificationOCA,
         ),
       ],
     );
