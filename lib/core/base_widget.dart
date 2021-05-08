@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class BaseWidget extends StatefulWidget {
   final Widget child;
-  final Widget header;
+  final Widget? header;
 
-  const BaseWidget({Key key, @required this.child, this.header}) : super(key: key);
+  const BaseWidget({Key? key, required this.child, this.header}) : super(key: key);
 
   @override
   BaseWidgetState createState() => BaseWidgetState();

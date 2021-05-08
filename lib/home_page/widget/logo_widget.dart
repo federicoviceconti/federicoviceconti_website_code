@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class LogoWidget extends StatelessWidget {
-  final Function() onLogoTap;
+  final Function()? onLogoTap;
 
   LogoWidget({this.onLogoTap});
 
@@ -11,9 +11,7 @@ class LogoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onLogoTap != null
-          ? () {
-              onLogoTap.call();
-            }
+          ? () { onLogoTap?.call(); }
           : () {},
       child: CursorWidget(
         child: Container(
@@ -27,7 +25,7 @@ class LogoWidget extends StatelessWidget {
           ),
           child: Text(
             'FV',
-            style: Theme.of(context).textTheme.bodyText1.copyWith(
+            style: Theme.of(context).textTheme.bodyText1!.copyWith(
                   fontWeight: FontWeight.normal,
                   fontSize: 26,
                 ),

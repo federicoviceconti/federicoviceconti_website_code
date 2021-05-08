@@ -40,11 +40,11 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
   }
 
   Widget _buildWelcomeText(double fontSize) {
-    final welcomeText = AppLocalizations.of(context).helloIAm;
+    final welcomeText = AppLocalizations.of(context)!.helloIAm;
 
     return Text(
       welcomeText,
-      style: Theme.of(context).textTheme.headline4.copyWith(
+      style: Theme.of(context).textTheme.headline4!.copyWith(
             fontWeight: FontWeight.bold,
             fontSize: Proportion.getProportionalValueOnLongSize(
               context,
@@ -65,8 +65,8 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
           onTap: _onTapMail,
           child: CursorWidget(
             child: Text(
-              AppLocalizations.of(context).sayHelloToMail,
-              style: Theme.of(context).textTheme.bodyText1.copyWith(
+              AppLocalizations.of(context)!.sayHelloToMail,
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(
                     height: 1.5,
                   ),
             ),
@@ -81,7 +81,7 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
         .analytics
         .logEvent(name: FirebaseAnalyticsHelper.MAIL_HOME_TAP);
 
-    Clipboard.setData(ClipboardData(text: AppLocalizations.of(context).mail));
+    Clipboard.setData(ClipboardData(text: AppLocalizations.of(context)!.mail));
 
     _showMailWithOpacity(false);
     _showCopyClipboardWithOpacity(true);
@@ -106,13 +106,13 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
           child: RichText(
             textAlign: TextAlign.right,
             text: TextSpan(
-              text: AppLocalizations.of(context).mail,
-              style: Theme.of(context).textTheme.bodyText1.copyWith(
+              text: AppLocalizations.of(context)!.mail,
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
               children: [
                 TextSpan(
-                  text: AppLocalizations.of(context).copiedWithEmoji,
+                  text: AppLocalizations.of(context)!.copiedWithEmoji,
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
               ],

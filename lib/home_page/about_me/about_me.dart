@@ -36,8 +36,8 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
     return Padding(
       padding: const EdgeInsets.only(top: 100.0),
       child: Text(
-        AppLocalizations.of(context).aboutMe,
-        style: Theme.of(context).textTheme.headline4.copyWith(
+        AppLocalizations.of(context)!.aboutMe,
+        style: Theme.of(context).textTheme.headline4!.copyWith(
               fontWeight: FontWeight.bold,
               fontSize: 32,
             ),
@@ -51,8 +51,8 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
         top: 16.0,
       ),
       child: Text(
-        AppLocalizations.of(context).aboutMeSubtitle,
-        style: Theme.of(context).textTheme.headline4.copyWith(
+        AppLocalizations.of(context)!.aboutMeSubtitle,
+        style: Theme.of(context).textTheme.headline4!.copyWith(
               fontWeight: FontWeight.w300,
               fontSize: 18,
             ),
@@ -72,7 +72,7 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
             headText,
             style: Theme.of(context)
                 .textTheme
-                .headline4
+                .headline4!
                 .copyWith(fontSize: 26.0, fontWeight: FontWeight.w700),
           ),
           Expanded(
@@ -90,33 +90,33 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
     );
   }
 
-  _buildSectionContent({String header, String content}) {
+  _buildSectionContent({String? header, String? content}) {
     return Padding(
       padding: const EdgeInsets.only(top: 16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            header,
-            style: Theme.of(context).textTheme.headline4.copyWith(
+            header ?? '',
+            style: Theme.of(context).textTheme.headline4!.copyWith(
                   fontSize: 20.0,
                 ),
           ),
-          _buildContent(content)
+          _buildContent(content ?? '')
         ],
       ),
     );
   }
 
   Widget _buildContent(String content) {
-    return content != null && content.isNotEmpty
+    return content.isNotEmpty
         ? Padding(
             padding: const EdgeInsets.only(top: 4.0),
             child: Text(
-              content ?? '',
-              style: Theme.of(context).textTheme.bodyText1.copyWith(
-                    fontSize: 14.0,
-                  ),
+              content,
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                fontSize: 14.0,
+              ),
             ),
           )
         : SizedBox();
@@ -126,14 +126,14 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildHeadingSectionWithLine(AppLocalizations.of(context).experience),
+        _buildHeadingSectionWithLine(AppLocalizations.of(context)!.experience),
         _buildSectionContent(
-          header: AppLocalizations.of(context).nttExperienceTitle,
-          content: AppLocalizations.of(context).nttExperienceContent,
+          header: AppLocalizations.of(context)!.nttExperienceTitle,
+          content: AppLocalizations.of(context)!.nttExperienceContent,
         ),
         _buildSectionContent(
-          header: AppLocalizations.of(context).vetryaExperienceTitle,
-          content: AppLocalizations.of(context).vetryaExperienceContent,
+          header: AppLocalizations.of(context)!.vetryaExperienceTitle,
+          content: AppLocalizations.of(context)!.vetryaExperienceContent,
         ),
       ],
     );
@@ -143,14 +143,14 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildHeadingSectionWithLine(AppLocalizations.of(context).education),
+        _buildHeadingSectionWithLine(AppLocalizations.of(context)!.education),
         _buildSectionContent(
-          header: AppLocalizations.of(context).elisCollegeEducationTitle,
-          content: AppLocalizations.of(context).elisCollegeEducationContent,
+          header: AppLocalizations.of(context)!.elisCollegeEducationTitle,
+          content: AppLocalizations.of(context)!.elisCollegeEducationContent,
         ),
         _buildSectionContent(
-          header: AppLocalizations.of(context).universityEducationTitle,
-          content: AppLocalizations.of(context).universityEducationContent,
+          header: AppLocalizations.of(context)!.universityEducationTitle,
+          content: AppLocalizations.of(context)!.universityEducationContent,
         ),
       ],
     );
@@ -160,18 +160,18 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildHeadingSectionWithLine(AppLocalizations.of(context).certification),
+        _buildHeadingSectionWithLine(AppLocalizations.of(context)!.certification),
         _buildSectionContent(
-          header: AppLocalizations.of(context).certificationAndroid,
+          header: AppLocalizations.of(context)!.certificationAndroid,
         ),
         _buildSectionContent(
-          header: AppLocalizations.of(context).certificationTOEFL,
+          header: AppLocalizations.of(context)!.certificationTOEFL,
         ),
         _buildSectionContent(
-          header: AppLocalizations.of(context).certificationOCP,
+          header: AppLocalizations.of(context)!.certificationOCP,
         ),
         _buildSectionContent(
-          header: AppLocalizations.of(context).certificationOCA,
+          header: AppLocalizations.of(context)!.certificationOCA,
         ),
       ],
     );

@@ -4,7 +4,7 @@ import 'package:federicoviceconti_github_io/home_page/widget/logo_widget.dart';
 import 'package:flutter/material.dart';
 
 class EasterEggWidget extends StatefulWidget {
-  final Function() onLogoTap;
+  final Function()? onLogoTap;
 
   EasterEggWidget({
     this.onLogoTap,
@@ -17,13 +17,13 @@ class EasterEggWidget extends StatefulWidget {
 class _EasterEggWidgetState extends State<EasterEggWidget> with WidgetsBindingObserver {
   double _top = 28;
   double _left = 28;
-  Timer _timerMovement;
+  Timer? _timerMovement;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
       int incrementTop = 1;
       int incrementLeft = 1;
 

@@ -1,7 +1,8 @@
 import 'package:federicoviceconti_github_io/core/base_widget.dart';
 import 'package:federicoviceconti_github_io/core/full_screen_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/about_me/about_me.dart';
-import 'package:federicoviceconti_github_io/home_page/contact_me/contact_me_widget.dart';
+import 'package:federicoviceconti_github_io/home_page/blog/blog_notifier.dart';
+import 'package:federicoviceconti_github_io/home_page/blog/blog_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/easter_egg/easter_egg_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/page_enum.dart';
 import 'package:federicoviceconti_github_io/home_page/who_am_i/who_am_i_widget.dart';
@@ -32,10 +33,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   double _offsetY = 0.0;
   PageEnum _pageSelected = PageEnum.home;
   final PageController _pageController =
-      PageController(initialPage: PageEnum.home.pageIndex);
+      PageController(initialPage: PageEnum.home.pageIndex ?? 0);
   final double _paddingHorizontal = 28.0;
   int _touchLogo = MAX_TOUCH_LOGO;
-  DateTime _easterEggStarted;
+  DateTime? _easterEggStarted;
 
   bool get _showEasterEgg => _touchLogo < 1;
 
@@ -106,7 +107,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              _buildNavButton('About me', page: PageEnum.aboutMe),
+              _buildNavButton(
+                AppLocalizations.of(context)!.aboutMe,
+                page: PageEnum.aboutMe,
+              ),
+              SizedBox(width: 20.0),
+              _buildNavButton(
+                AppLocalizations.of(context)!.blog,
+                page: PageEnum.blog,
+              ),
               SizedBox(width: 20.0),
               _buildSwitchTheme(),
               SizedBox(width: 20.0),
@@ -117,7 +126,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     );
   }
 
-  Widget _buildNavButton(String text, {PageEnum page}) {
+  Widget _buildNavButton(String text, {PageEnum page = PageEnum.home}) {
     return GestureDetector(
       onTap: () => _animateToPage(page),
       child: CursorWidget(
@@ -143,7 +152,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     );
   }
 
-  _buildUnderlineNav({bool conditionToShow}) {
+  _buildUnderlineNav({bool conditionToShow = false}) {
     return AnimatedContainer(
       duration: Duration(milliseconds: 200),
       width: conditionToShow ? 40.0 : 0.0,
@@ -160,7 +169,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         .analytics
         .setCurrentScreen(screenName: page.toString());
 
-    _pageController.animateToPage(page.pageIndex,
+    _pageController.animateToPage(page.pageIndex!,
         duration: Duration(milliseconds: 500), curve: Curves.ease);
 
     setState(() {
@@ -224,8 +233,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   void _showRemainingStepTouchLogo() {
     Fluttertoast.showToast(
-      msg: AppLocalizations.of(context)
-          .aboutMe
+      msg: AppLocalizations.of(context)!
+          .touchLogo
           .replaceAll('{0}', _touchLogo.toString()),
       gravity: ToastGravity.BOTTOM,
       toastLength: Toast.LENGTH_SHORT,
@@ -246,9 +255,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         child: PageView(
           physics: NeverScrollableScrollPhysics(),
           controller: _pageController,
-          children: [WhoAmIWidget(), AboutMeWidget(), ContactMeWidget()],
+          children: [
+            WhoAmIWidget(),
+            AboutMeWidget(),
+            _buildBlogWidget(),
+          ],
         ),
       ),
+    );
+  }
+
+  _buildBlogWidget() {
+    return ChangeNotifierProvider<BlogNotifier>(
+      create: (_) => BlogNotifier(),
+      builder: (_, __) => BlogWidget(),
     );
   }
 
@@ -270,7 +290,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     final secondsBeforeRestart = 1;
 
     if (_easterEggStarted == null ||
-        now.difference(_easterEggStarted).inSeconds > secondsBeforeRestart) {
+        (now.difference(_easterEggStarted ?? DateTime.now()).inSeconds > secondsBeforeRestart)) {
       setState(() {
         _touchLogo = MAX_TOUCH_LOGO;
       });

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class FullScreenWidget extends StatelessWidget {
-  final EdgeInsets padding;
-  final Alignment alignment;
+  final EdgeInsets? padding;
+  final Alignment? alignment;
   final Widget child;
 
   const FullScreenWidget({
-    Key key,
+    Key? key,
     this.padding,
     this.alignment,
-    this.child
+    required this.child
   }) : super(key: key);
 
   @override

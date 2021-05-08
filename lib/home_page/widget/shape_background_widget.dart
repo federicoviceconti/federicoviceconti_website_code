@@ -11,9 +11,9 @@ class ShapeBackgroundWidget extends StatelessWidget {
   final bool movingShape;
 
   ShapeBackgroundWidget({
-    Key key,
-    this.coordinates,
-    this.movingShape,
+    Key? key,
+    required this.coordinates,
+    required this.movingShape,
   }) : super(key: key);
 
   @override
@@ -82,15 +82,15 @@ class ShapePositionedWidget extends StatefulWidget {
   final bool moveShape;
 
   const ShapePositionedWidget({
-    Key key,
-    this.x,
-    this.y,
-    this.radius,
-    this.deltaTheta,
-    this.shapeType,
-    this.shapeStyle,
-    this.deltaTimeMillis, 
-    this.moveShape,
+    Key? key,
+    required this.x,
+    required this.y,
+    required this.radius,
+    required this.deltaTheta,
+    required this.shapeType,
+    required this.shapeStyle,
+    required this.deltaTimeMillis,
+    required this.moveShape,
   }) : super(key: key);
 
   @override
@@ -131,7 +131,7 @@ class _ShapePositionedWidgetState extends State<ShapePositionedWidget> {
       Timer.periodic(Duration(milliseconds: widget.deltaTimeMillis), (timer) {
         if(mounted) {
           setState(() {
-            theta = theta + widget?.deltaTheta ?? 0.0;
+            theta = theta + widget.deltaTheta;
           });
         } else {
           timer.cancel();

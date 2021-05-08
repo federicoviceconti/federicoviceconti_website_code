@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AnimationHelper {
   static Widget buildOpacityChild(bool condition,
-      {bool hasAnimation = true, Widget child}) {
+      {bool hasAnimation = true, required Widget child}) {
     return hasAnimation
         ? AnimatedOpacity(
             opacity: condition ? 1 : 0,
@@ -18,7 +18,7 @@ class AnimationHelper {
   }
 
   static Widget buildSwitcher(bool condition,
-      {@required Widget childOnTrue, @required Widget childOnFalse}) {
+      {required Widget childOnTrue, required Widget childOnFalse}) {
     return AnimatedSwitcher(
       duration: Duration(
         milliseconds: 500,

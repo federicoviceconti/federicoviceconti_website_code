@@ -5,8 +5,8 @@ class CursorWidget extends StatelessWidget {
   final Widget child;
 
   const CursorWidget({
-    Key key,
-    this.child,
+    Key? key,
+    required this.child,
   }) : super(key: key);
 
   @override

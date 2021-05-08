@@ -50,7 +50,14 @@ class ShapePainter extends CustomPainter {
   }
 
   void _drawCircle(Canvas canvas, Size size) {
-    canvas.drawCircle(Offset(size.width / 2, size.height / 2), (size.width ?? size.height) / 2 , painter);
+    canvas.drawCircle(
+      Offset(
+          size.width / 2,
+          size.height / 2
+      ),
+      size.width / 2,
+      painter
+    );
   }
 
   @override

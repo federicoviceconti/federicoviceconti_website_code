@@ -24,13 +24,15 @@ class _MyPersonalWebsiteState extends State<MyPersonalWebsite> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<AppThemeNotifier>(
-        create: (context) => AppThemeNotifier(), builder: _buildMaterialApp);
+      create: (context) => AppThemeNotifier(),
+      builder: _buildMaterialApp,
+    );
   }
 
-  Widget _buildMaterialApp(BuildContext context, Widget child) {
+  Widget _buildMaterialApp(BuildContext context, Widget? child) {
     return Consumer<AppThemeNotifier>(
       builder: (_, notifier, __) => MaterialApp(
-        onGenerateTitle: (ctx) => AppLocalizations.of(ctx).webAppTitle,
+        onGenerateTitle: (BuildContext ctx) => AppLocalizations.of(ctx)!.webAppTitle,
         navigatorObservers: <NavigatorObserver>[
           FirebaseAnalyticsHelper().observer
         ],

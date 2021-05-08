@@ -1,10 +1,11 @@
 {
   "webAppTitle": "Federico Viceconti's Website",
-  "aboutMe": "You are now {0} step away to see the magic",
+  "aboutMe": "About me",
+  "touchLogo": "You are now {0} step away to see the magic",
   "sayHelloToMail": "Say hello to viceconti.federico@gmail.com 👋",
-  "helloIAm": "Hello, I'm Federico!\nAndroid developer, Flutter enthusiast.\nFrom Rome, 🇮🇹",
+  "helloIAm": "Hello, I'm Federico!\nAndroid developer, Flutter enthusiast",
   "mail": "viceconti.federico@gmail.com",
-  "copiedWithEmoji": "copied 📋",
+  "copiedWithEmoji": " copied 📋",
   "aboutMeSubtitle": "Passionate developer, who never stop learning since I started.",
   "experience": "Experience",
   "nttExperienceTitle": "Mobile Developer @ NTT Data Italia",
@@ -20,5 +21,6 @@
   "certificationAndroid": "Associate Android Developer, Google / Udacity",
   "certificationTOEFL": "TOEFL iBT",
   "certificationOCP": "OCP Java SE 8, Oracle",
-  "certificationOCA": "OCA Java SE 8, Oracle"
+  "certificationOCA": "OCA Java SE 8, Oracle",
+  "blog": "Blog"
 }
