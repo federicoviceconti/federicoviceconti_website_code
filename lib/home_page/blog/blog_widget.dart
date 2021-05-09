@@ -96,18 +96,15 @@ class _BlogWidgetState extends State<BlogWidget> with WidgetsBindingObserver {
   }
 
   _buildImage(String? imageUrl) {
-    if (imageUrl != null) {
+    final isSmallScreen = MediaQuery.of(context).size.width < 400;
+    if (imageUrl != null && !isSmallScreen) {
       return Image.asset(
         'assets/png/$imageUrl.png',
-        width: 150.0,
-        height: 150.0,
+        width: 150,
         fit: BoxFit.cover,
       );
     } else {
-      return Container(
-        width: 150.0,
-        height: 150.0,
-      );
+      return null;
     }
   }
 }
