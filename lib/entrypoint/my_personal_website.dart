@@ -17,7 +17,7 @@ class _MyPersonalWebsiteState extends State<MyPersonalWebsite> {
   @override
   void initState() {
     super.initState();
-    FirebaseAnalyticsHelper().analytics.logAppOpen();
+    FirebaseAnalyticsHelper().logAppOpen();
     HtmlUtility.printAsciiArt();
   }
 
@@ -50,7 +50,6 @@ class _MyPersonalWebsiteState extends State<MyPersonalWebsite> {
         ],
         supportedLocales: [
           const Locale.fromSubtags(languageCode: 'en'),
-          const Locale.fromSubtags(languageCode: 'it'),
         ],
       ),
     );

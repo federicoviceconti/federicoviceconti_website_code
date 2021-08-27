@@ -40,7 +40,7 @@ class BlogNotifier extends ChangeNotifier {
     if(await canLaunch(urlToOpen ?? '')) {
       launch(urlToOpen!);
 
-      FirebaseAnalyticsHelper().analytics.logEvent(
+      FirebaseAnalyticsHelper().logEvent(
         name: 'tap_blog_item',
         parameters: {
           'type': _blogItems[index].type.name

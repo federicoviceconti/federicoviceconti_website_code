@@ -17,6 +17,7 @@ dependencies:
   fluttertoast: ^8.0.6
   firebase_analytics: ^8.0.3
   url_launcher: ^6.0.3
+  flutter_svg: ^0.22.0
 
 dev_dependencies:
   flutter_test:
@@ -27,3 +28,4 @@ flutter:
 
   assets:
     - assets/png/
+    - assets/svg/

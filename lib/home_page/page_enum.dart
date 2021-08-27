@@ -1,13 +1,13 @@
 enum PageEnum {
   home,
   aboutMe,
-  blog
+  contacts
 }
 
 extension PageEnumExtension on PageEnum {
   int? get pageIndex => const {
     PageEnum.home: 0,
     PageEnum.aboutMe: 1,
-    PageEnum.blog: 2
+    PageEnum.contacts: 2,
   }[this];
 }

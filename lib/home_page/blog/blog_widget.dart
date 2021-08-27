@@ -1,9 +1,11 @@
 import 'package:federicoviceconti_github_io/home_page/blog/blog_item.dart';
 import 'package:federicoviceconti_github_io/home_page/blog/blog_notifier.dart';
 import 'package:federicoviceconti_github_io/home_page/widget/cursor_widget.dart';
+import 'package:federicoviceconti_github_io/utility/image_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BlogWidget extends StatefulWidget {
   @override
@@ -33,7 +35,7 @@ class _BlogWidgetState extends State<BlogWidget> with WidgetsBindingObserver {
           Padding(
             padding: const EdgeInsets.only(top: 100.0),
             child: Text(
-              "Blog",
+              AppLocalizations.of(context)!.blog,
               style: Theme.of(context).textTheme.headline4!.copyWith(
                     fontWeight: FontWeight.bold,
                     fontSize: 32,
@@ -95,14 +97,10 @@ class _BlogWidgetState extends State<BlogWidget> with WidgetsBindingObserver {
     );
   }
 
-  _buildImage(String? imageUrl) {
+  Widget? _buildImage(String? imageUrl) {
     final isSmallScreen = MediaQuery.of(context).size.width < 400;
     if (imageUrl != null && !isSmallScreen) {
-      return Image.asset(
-        'assets/png/$imageUrl.png',
-        width: 150,
-        fit: BoxFit.cover,
-      );
+      return ImageHelper.getPng(imageUrl, width: 150);
     } else {
       return null;
     }

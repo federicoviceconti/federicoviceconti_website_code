@@ -5,6 +5,10 @@ class CustomThemeData {
     scaffoldBackgroundColor: Colors.white,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: TextTheme(
+      headline6: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.normal,
+      ),
       headline4: TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.w600,
@@ -28,6 +32,10 @@ class CustomThemeData {
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: Colors.black,
     textTheme: TextTheme(
+      headline6: TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.normal,
+      ),
       headline4: TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.w600

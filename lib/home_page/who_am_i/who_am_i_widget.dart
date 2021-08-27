@@ -78,7 +78,6 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
 
   void _onTapMail() {
     FirebaseAnalyticsHelper()
-        .analytics
         .logEvent(name: FirebaseAnalyticsHelper.MAIL_HOME_TAP);
 
     Clipboard.setData(ClipboardData(text: AppLocalizations.of(context)!.mail));

@@ -3,6 +3,7 @@ import 'package:federicoviceconti_github_io/core/full_screen_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/about_me/about_me.dart';
 import 'package:federicoviceconti_github_io/home_page/blog/blog_notifier.dart';
 import 'package:federicoviceconti_github_io/home_page/blog/blog_widget.dart';
+import 'package:federicoviceconti_github_io/home_page/contacts/contacts_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/easter_egg/easter_egg_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/page_enum.dart';
 import 'package:federicoviceconti_github_io/home_page/who_am_i/who_am_i_widget.dart';
@@ -113,8 +114,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               SizedBox(width: 20.0),
               _buildNavButton(
-                AppLocalizations.of(context)!.blog,
-                page: PageEnum.blog,
+                AppLocalizations.of(context)!.contacts,
+                page: PageEnum.contacts,
               ),
               SizedBox(width: 20.0),
               _buildSwitchTheme(),
@@ -165,9 +166,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   _animateToPage(PageEnum page) {
-    FirebaseAnalyticsHelper()
-        .analytics
-        .setCurrentScreen(screenName: page.toString());
+    FirebaseAnalyticsHelper().setCurrentScreen(screenName: page.toString());
 
     _pageController.animateToPage(page.pageIndex!,
         duration: Duration(milliseconds: 500), curve: Curves.ease);
@@ -221,9 +220,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     });
 
     if (_touchLogo == 0) {
-      FirebaseAnalyticsHelper().analytics.logEvent(
-            name: FirebaseAnalyticsHelper.EASTER_EGG_FOUND,
-          );
+      FirebaseAnalyticsHelper()
+          .logEvent(name: FirebaseAnalyticsHelper.EASTER_EGG_FOUND,);
 
       setState(() {
         _easterEggStarted = DateTime.now();
@@ -258,17 +256,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           children: [
             WhoAmIWidget(),
             AboutMeWidget(),
-            _buildBlogWidget(),
+            ContactsWidget(),
           ],
         ),
       ),
-    );
-  }
-
-  _buildBlogWidget() {
-    return ChangeNotifierProvider<BlogNotifier>(
-      create: (_) => BlogNotifier(),
-      builder: (_, __) => BlogWidget(),
     );
   }
 

@@ -8,6 +8,8 @@ class AppThemeNotifier extends ChangeNotifier {
     ? ThemeMode.light 
     : ThemeMode.dark;
 
+  bool get isDark => currentAppTheme == ThemeMode.dark;
+
   switchAppTheme() {
     _appTheme = _appTheme == CustomThemeData.lightTheme
       ? CustomThemeData.darkTheme
