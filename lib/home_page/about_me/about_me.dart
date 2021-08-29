@@ -90,7 +90,7 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
     );
   }
 
-  _buildSectionContent({String? header, String? content}) {
+  _buildSectionContent({String? header, String? content, String? year}) {
     return Padding(
       padding: const EdgeInsets.only(top: 16.0),
       child: Column(
@@ -99,9 +99,11 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
           Text(
             header ?? '',
             style: Theme.of(context).textTheme.headline4!.copyWith(
-                  fontSize: 20.0,
-                ),
+              fontSize: 20.0,
+            ),
           ),
+          SizedBox(height: 4),
+          _buildYearOrEmpty(year),
           _buildContent(content ?? '')
         ],
       ),
@@ -130,10 +132,12 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
         _buildSectionContent(
           header: AppLocalizations.of(context)!.nttExperienceTitle,
           content: AppLocalizations.of(context)!.nttExperienceContent,
+          year: "2018 - Present",
         ),
         _buildSectionContent(
           header: AppLocalizations.of(context)!.vetryaExperienceTitle,
           content: AppLocalizations.of(context)!.vetryaExperienceContent,
+          year: "2017 - 2018",
         ),
       ],
     );
@@ -173,6 +177,24 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
         _buildSectionContent(
           header: AppLocalizations.of(context)!.certificationOCA,
         ),
+      ],
+    );
+  }
+
+  Widget _buildYearOrEmpty(String? year) {
+    if(year == null || year.isEmpty) return Container();
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          '($year)',
+          style: Theme.of(context).textTheme.headline6!.copyWith(
+            fontSize: 12.0,
+          ),
+        ),
+        SizedBox(height: 6),
       ],
     );
   }

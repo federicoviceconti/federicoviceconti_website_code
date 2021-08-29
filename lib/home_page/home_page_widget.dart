@@ -1,8 +1,6 @@
 import 'package:federicoviceconti_github_io/core/base_widget.dart';
 import 'package:federicoviceconti_github_io/core/full_screen_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/about_me/about_me.dart';
-import 'package:federicoviceconti_github_io/home_page/blog/blog_notifier.dart';
-import 'package:federicoviceconti_github_io/home_page/blog/blog_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/contacts/contacts_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/easter_egg/easter_egg_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/page_enum.dart';

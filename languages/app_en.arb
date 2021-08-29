@@ -6,9 +6,9 @@
   "helloIAm": "Hello, I'm Federico!\nAndroid developer, Flutter enthusiast",
   "mail": "viceconti.federico@gmail.com",
   "copiedWithEmoji": " copied 📋",
-  "aboutMeSubtitle": "Passionate developer, who never stop learning since I started.",
+  "aboutMeSubtitle": "Developer, lifelong learner and music lover. Born in '97. I lived in a little city of the south of Italy 🇮🇹, but now I'm based in Rome.\nI love mobile development, in particular Android. At the moment I'm using Flutter to build cross, lovely and functional app.",
   "experience": "Experience",
-  "nttExperienceTitle": "Mobile Developer @ NTT Data Italia",
+  "nttExperienceTitle": "Mobile Developer @ NTT Data Italy",
   "nttExperienceContent": "Working in Mobile&Creative Technology. Clients: Enel X, Poste Italiane.\nApps developed: JuicePass, YoUrban, ForFriends, NoiDiPoste\nTechnologies & Tools: Flutter, Android w/ Java, Xamarin, Git, Jenkins, Jira",
   "vetryaExperienceTitle": "Software developer @ Vetrya S.p.A.",
   "vetryaExperienceContent": "Projects: Vision app, Vilast, Corporate Campus App\nTechnologies & Tools: Android w/ Java, React.Js, React Native",
@@ -23,5 +23,7 @@
   "certificationOCP": "OCP Java SE 8, Oracle",
   "certificationOCA": "OCA Java SE 8, Oracle",
   "blog": "Blog",
-  "contacts": "Contacts"
+  "contacts": "Contacts",
+  "contactsHeading": "Hi, thanks for visiting my personal website! If you want to reach me out, please use the following contacts:",
+  "websiteMadeWith": "Website made with ❤️ and Flutter"
 }

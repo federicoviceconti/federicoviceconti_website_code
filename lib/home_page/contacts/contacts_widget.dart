@@ -5,6 +5,7 @@ import 'package:federicoviceconti_github_io/utility/image_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ContactsWidget extends StatefulWidget {
   const ContactsWidget({Key? key}) : super(key: key);
@@ -20,52 +21,83 @@ class _ContactsWidgetState extends State<ContactsWidget> {
   }
 
   Widget _buildBody() {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 100.0),
-            child: Text(
-              'Contacts',
-              style: Theme.of(context).textTheme.headline4!.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 32,
+    return Stack(
+      children: [
+        SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 100.0),
+                child: Text(
+                  AppLocalizations.of(context)!.contacts,
+                  style: Theme.of(context).textTheme.headline4!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 32,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 16.0,
+                ),
+                child: Text(
+                  AppLocalizations.of(context)!.contactsHeading,
+                  style: Theme.of(context).textTheme.headline4!.copyWith(
+                    fontWeight: FontWeight.w300,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              _buildRowWithData('mail', 'Mail', 'viceconti.federico@gmail.com', () {
+                FirebaseAnalyticsHelper()
+                    .logEvent(name: FirebaseAnalyticsHelper.EMAIL_CONTACTS);
+                launch('mailto:viceconti.federico@gmail.com');
+              }),
+              SizedBox(height: 20),
+              _buildRowWithData('github', 'Github', '@federicoviceconti', () {
+                FirebaseAnalyticsHelper()
+                    .logEvent(name: FirebaseAnalyticsHelper.GITHUB_CONTACTS);
+                launch('https://github.com/federicoviceconti');
+              }),
+              SizedBox(height: 20),
+              _buildRowWithData('linkedin', 'LinkedIn', '/federicoviceconti', () {
+                FirebaseAnalyticsHelper()
+                    .logEvent(name: FirebaseAnalyticsHelper.LINKEDIN_CONTACTS);
+                launch('https://www.linkedin.com/in/federicoviceconti/');
+              }),
+              SizedBox(height: 20),
+            ],
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Theme.of(context).colorScheme.background,
+                  blurRadius: 4,
+                  spreadRadius: 4,
+                )
+              ]
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Text(
+                  "Website made with ❤️ and Flutter",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(fontSize: 14)
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 16.0,
-            ),
-            child: Text(
-              'Hi, thanks for visiting my personal website! If you want to reach me out, please use the following contacts:',
-              style: Theme.of(context).textTheme.headline4!.copyWith(
-                fontWeight: FontWeight.w300,
-                fontSize: 18,
-              ),
-            ),
-          ),
-          _buildRowWithData('mail', 'Mail', 'viceconti.federico@gmail.com', () {
-            FirebaseAnalyticsHelper()
-                .logEvent(name: FirebaseAnalyticsHelper.EMAIL_CONTACTS);
-            launch('mailto:viceconti.federico@gmail.com');
-          }),
-          SizedBox(height: 20),
-          _buildRowWithData('github', 'Github', '@federicoviceconti', () {
-            FirebaseAnalyticsHelper()
-                .logEvent(name: FirebaseAnalyticsHelper.GITHUB_CONTACTS);
-            launch('https://github.com/federicoviceconti');
-          }),
-          SizedBox(height: 20),
-          _buildRowWithData('linkedin', 'LinkedIn', '/federicoviceconti', () {
-            FirebaseAnalyticsHelper()
-                .logEvent(name: FirebaseAnalyticsHelper.LINKEDIN_CONTACTS);
-            launch('https://www.linkedin.com/in/federicoviceconti/');
-          }),
-        ],
-      ),
+        )
+      ],
     );
   }
 
@@ -74,7 +106,7 @@ class _ContactsWidgetState extends State<ContactsWidget> {
 
     return Padding(
       padding: const EdgeInsets.only(
-        top: 40.0,
+        top: 20.0,
       ),
       child: CursorWidget(
         child: GestureDetector(
@@ -82,46 +114,37 @@ class _ContactsWidgetState extends State<ContactsWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Container(
-                padding: const EdgeInsets.only(left: 16),
-                child: Row(
-                  children: [
-                    Consumer<AppThemeNotifier>(
-                      builder: (_, notifier, __) {
-                        return ImageHelper.getSvg(
-                            imageSrcSvg,
-                            width: 50,
-                            color: notifier.isDark ? Colors.white : Colors.black
-                        );
-                      },
-                    ),
-                    SizedBox(width: 16),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline4!
-                              .copyWith(fontSize: 26.0, fontWeight: FontWeight.w700),
-                        ),
-                        Text(
-                          subtitle,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline6!
-                              .copyWith(fontSize: width > 400 ? 14.0 : 12.0),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+              Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline4!
+                            .copyWith(fontSize: 26.0, fontWeight: FontWeight.w700),
+                      ),
+                      Text(
+                        subtitle,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6!
+                            .copyWith(fontSize: width > 400 ? 14.0 : 12.0),
+                      ),
+                    ],
+                  ),
+                  Spacer(),
+                  ImageHelper.getSvg(
+                    imageSrcSvg,
+                    width: 50,
+                  ),
+                ],
               ),
               SizedBox(height: 16),
               Container(
                 margin: const EdgeInsets.only(
-                  left: 16.0,
                   bottom: 6.0,
                 ),
                 height: 0.1,

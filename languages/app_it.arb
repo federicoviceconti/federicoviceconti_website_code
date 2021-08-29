@@ -6,7 +6,7 @@
   "helloIAm": "Ciao, sono Federico!\nAndroid developer, Flutter enthusiast",
   "mail": "viceconti.federico@gmail.com",
   "copiedWithEmoji": " copiato 📋",
-  "aboutMeSubtitle": "Mobile Developer, che non ha mai smesso di innamorarsi della sviluppo dalla prima riga di codice scritta.",
+  "aboutMeSubtitle": "Sviluppatore, lifelong learner e amante della musica. Nato nel '97 in una piccola cittadina del sud Italia 🇮🇹, ma al momento vivo a Roma.\nAmo lo sviluppo mobile, ma in particolare adoro creare app Android. Al momento mi sto specializzando nello sviluppo di app tramite framework Flutter.",
   "experience": "Esperienze",
   "nttExperienceTitle": "Mobile Developer @ NTT Data Italia",
   "nttExperienceContent": "Sto lavorando per la business line \"Mobile&Creative Technology\". Clienti: Enel X, Poste Italiane.\nApplicazioni sviluppate: JuicePass, YoUrban, ForFriends, NoiDiPoste\nTecnologie & strumenti: Flutter, Android w/ Java, Xamarin, Git, Jenkins, Jira",
@@ -22,5 +22,8 @@
   "certificationTOEFL": "TOEFL iBT",
   "certificationOCP": "OCP Java SE 8, Oracle",
   "certificationOCA": "OCA Java SE 8, Oracle",
-  "blog": "Blog"
+  "blog": "Blog",
+  "contacts": "Contatti",
+  "contactsHeading": "Ciao, grazie per aver visitato il mio sito! In caso tu voglia contattarmi, usa uno dei seguenti recapiti:",
+  "websiteMadeWith": "Website made with ❤️ and Flutter"
 }

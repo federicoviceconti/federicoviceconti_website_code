@@ -16,7 +16,7 @@ class ImageHelper {
       width: width,
       fit: fit ?? BoxFit.cover,
       color: color,
-      colorBlendMode: BlendMode.color,
+      colorBlendMode: BlendMode.screen,
     );
   }
 }

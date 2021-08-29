@@ -1,10 +1,1 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" xml:space="preserve">
-<g id="XMLID_1_">
-	<polygon id="XMLID_869_" points="0,127.5 0,274.219 104.8,206.1 	"/>
-	<polygon id="XMLID_870_" points="400,274.219 400,127.5 295.2,206.1 	"/>
-	<polygon id="XMLID_871_" points="200,277.5 130.357,225.268 0,310 0,340 400,340 400,310 269.643,225.268 	"/>
-	<polygon id="XMLID_872_" points="0,90 200,240 400,90 400,60 0,60 	"/>
-</g>
-</svg>
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><path d="m0 127.5v146.719l104.8-68.119z"/><path d="m400 274.219v-146.719l-104.8 78.6z"/><path d="m200 277.5-69.643-52.232-130.357 84.732v30h400v-30l-130.357-84.732z"/><path d="m0 90 200 150 200-150v-30h-400z"/></svg>
