@@ -1,9 +1,7 @@
 import 'package:federicoviceconti_github_io/home_page/widget/cursor_widget.dart';
-import 'package:federicoviceconti_github_io/notifier/app_theme_notifier.dart';
 import 'package:federicoviceconti_github_io/utility/firebase_analytics_helper.dart';
 import 'package:federicoviceconti_github_io/utility/image_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -87,7 +85,7 @@ class _ContactsWidgetState extends State<ContactsWidget> {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child: Text(
-                  "Website made with ❤️ and Flutter",
+                  AppLocalizations.of(context)!.websiteMadeWith,
                   textAlign: TextAlign.center,
                   style: Theme.of(context)
                       .textTheme
