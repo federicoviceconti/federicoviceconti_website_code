@@ -26,28 +26,8 @@ class _ContactsWidgetState extends State<ContactsWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 100.0),
-                child: Text(
-                  AppLocalizations.of(context)!.contacts,
-                  style: Theme.of(context).textTheme.headline4!.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 16.0,
-                ),
-                child: Text(
-                  AppLocalizations.of(context)!.contactsHeading,
-                  style: Theme.of(context).textTheme.headline4!.copyWith(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
+              _buildContactHeadlineTitle(),
+              _buildContactHeading(),
               _buildRowWithData('mail', 'Mail', 'viceconti.federico@gmail.com', () {
                 FirebaseAnalyticsHelper()
                     .logEvent(name: FirebaseAnalyticsHelper.EMAIL_CONTACTS);
@@ -58,7 +38,7 @@ class _ContactsWidgetState extends State<ContactsWidget> {
                 FirebaseAnalyticsHelper()
                     .logEvent(name: FirebaseAnalyticsHelper.GITHUB_CONTACTS);
                 launch('https://github.com/federicoviceconti');
-              }),
+              },),
               SizedBox(height: 20),
               _buildRowWithData('linkedin', 'LinkedIn', '/federicoviceconti', () {
                 FirebaseAnalyticsHelper()
@@ -97,6 +77,34 @@ class _ContactsWidgetState extends State<ContactsWidget> {
         )
       ],
     );
+  }
+
+  Padding _buildContactHeadlineTitle() {
+    return Padding(
+              padding: const EdgeInsets.only(top: 100.0),
+              child: Text(
+                AppLocalizations.of(context)!.contacts,
+                style: Theme.of(context).textTheme.headline4!.copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 32,
+                ),
+              ),
+            );
+  }
+
+  Padding _buildContactHeading() {
+    return Padding(
+              padding: const EdgeInsets.only(
+                top: 16.0,
+              ),
+              child: Text(
+                AppLocalizations.of(context)!.contactsHeading,
+                style: Theme.of(context).textTheme.headline4!.copyWith(
+                  fontWeight: FontWeight.w300,
+                  fontSize: 18,
+                ),
+              ),
+            );
   }
 
   Widget _buildRowWithData(String imageSrcSvg, String title, String subtitle, Null Function() action) {
