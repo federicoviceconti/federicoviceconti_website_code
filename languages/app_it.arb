@@ -25,5 +25,7 @@
   "blog": "Blog",
   "contacts": "Contatti",
   "contactsHeading": "Ciao, grazie per aver visitato il mio sito! In caso tu voglia contattarmi, usa uno dei seguenti recapiti:",
-  "websiteMadeWith": "Website made with ❤️ and Flutter"
+  "websiteMadeWith": "Website made with ❤️ and Flutter",
+  "darkModeSelected": "Attiva light mode",
+  "lightModeSelected": "Attiva dark mode"
 }

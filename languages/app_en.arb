@@ -25,5 +25,7 @@
   "blog": "Blog",
   "contacts": "Contacts",
   "contactsHeading": "Hi, thanks for visiting my personal website! If you want to reach me out, please use the following contacts:",
-  "websiteMadeWith": "Website made with ❤️ and Flutter"
+  "websiteMadeWith": "Website made with ❤️ and Flutter",
+  "darkModeSelected": "Activate light mode",
+  "lightModeSelected": "Activate dark mode"
 }

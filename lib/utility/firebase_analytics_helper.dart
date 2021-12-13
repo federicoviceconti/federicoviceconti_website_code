@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/foundation.dart';
 
 class FirebaseAnalyticsHelper {
   static const EASTER_EGG_FOUND = 'easter_egg_found';
@@ -27,18 +28,18 @@ class FirebaseAnalyticsHelper {
   FirebaseAnalyticsObserver get observer => _observer;
 
   void logAppOpen() {
-    _analytics.logAppOpen();
+    if(kReleaseMode) _analytics.logAppOpen();
   }
 
   void logEvent({required String name, Map<String, Object?>? parameters}) {
-    _analytics.logEvent(name: name, parameters: parameters);
+    if(kReleaseMode) _analytics.logEvent(name: name, parameters: parameters);
   }
 
   Future<void> initialize() async {
-    await Firebase.initializeApp();
+    if(kReleaseMode) await Firebase.initializeApp();
   }
 
   void setCurrentScreen({required String screenName}) {
-    _analytics.setCurrentScreen(screenName: screenName);
+    if(kReleaseMode) _analytics.setCurrentScreen(screenName: screenName);
   }
 }
