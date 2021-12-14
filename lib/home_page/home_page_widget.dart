@@ -20,6 +20,12 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   @override
+  void initState() {
+    super.initState();
+    Provider.of<HomePageNotifier>(context, listen: false).init();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BaseWidget(
       child: _buildBody(),

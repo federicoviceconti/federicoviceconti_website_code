@@ -13,28 +13,6 @@
   <link rel="manifest" href="manifest.json">
 
   <title>Federico Viceconti's Website</title>
-
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
-
-  <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-analytics.js"></script>
-
-  <script>
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    var firebaseConfig = {
-      apiKey: "AIzaSyAZzS59UlWQLTZl6MCcP9IgNNSTXxoPnFc",
-      authDomain: "personal-website-5ad8e.firebaseapp.com",
-      projectId: "personal-website-5ad8e",
-      storageBucket: "personal-website-5ad8e.appspot.com",
-      messagingSenderId: "959785063658",
-      appId: "1:959785063658:web:cfbdb74b7d3941f49d7393",
-      measurementId: "G-WVBTCXYEMH"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  </script>
 </head>
 <body>
   <script>
@@ -44,7 +22,7 @@
           .then(function(registration) {
             console.log("Service Worker Registered!");
           }).catch(function(err) {
-              console.log("Service Worker not registered!", err);
+            console.log("Service Worker not registered!", err);
           });
       });
     }

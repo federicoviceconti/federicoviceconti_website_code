@@ -34,9 +34,6 @@ class _MyPersonalWebsiteState extends State<MyPersonalWebsite> {
     return Consumer<AppThemeNotifier>(
       builder: (_, notifier, __) => MaterialApp(
         onGenerateTitle: (BuildContext ctx) => AppLocalizations.of(ctx)!.webAppTitle,
-        navigatorObservers: <NavigatorObserver>[
-          FirebaseAnalyticsHelper().observer
-        ],
         darkTheme: CustomThemeData.darkTheme,
         theme: CustomThemeData.lightTheme,
         themeMode: notifier.currentAppTheme,

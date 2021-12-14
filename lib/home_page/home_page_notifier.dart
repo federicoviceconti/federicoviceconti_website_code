@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import 'page_enum.dart';
 
@@ -23,7 +24,12 @@ class HomePageNotifier extends ChangeNotifier {
   DateTime? _easterEggStarted;
 
   final PageController _pageController =
-      PageController(initialPage: PageEnum.home.pageIndex ?? 0);
+      PageController(initialPage: PageEnum.home.pageIndex ?? 0, viewportFraction: 0.9999);
+
+  void init() async {
+    final info = await PackageInfo.fromPlatform();
+    print("Version ${info.version}_${info.buildNumber}");
+  }
 
   void onMouseEnter() {
     _defaultPosition = false;
@@ -52,8 +58,11 @@ class HomePageNotifier extends ChangeNotifier {
     if (_pageSelected != page) {
       FirebaseAnalyticsHelper().setCurrentScreen(screenName: page.toString());
 
-      await _pageController.animateToPage(page.pageIndex!,
-          duration: Duration(milliseconds: 500), curve: Curves.ease);
+      await _pageController.animateToPage(
+        page.pageIndex!,
+        duration: Duration(milliseconds: 500),
+        curve: Curves.ease,
+      );
 
       _pageSelected = page;
       notifyListeners();
