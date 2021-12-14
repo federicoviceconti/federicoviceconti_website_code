@@ -58,7 +58,7 @@ class _PopupMenuHomeState extends State<PopupMenuHome> {
   }) {
     return CursorWidget(
       child: GestureDetector(
-        onTap: widget.onSwitchThemePress,
+        onTap: () => widget.onSwitchThemePress(),
         child: Row(
           children: [
             Icon(

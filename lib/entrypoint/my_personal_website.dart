@@ -1,4 +1,5 @@
 import 'package:federicoviceconti_github_io/core/theme_data.dart';
+import 'package:federicoviceconti_github_io/home_page/home_page_notifier.dart';
 import 'package:federicoviceconti_github_io/home_page/home_page_widget.dart';
 import 'package:federicoviceconti_github_io/notifier/app_theme_notifier.dart';
 import 'package:federicoviceconti_github_io/utility/firebase_analytics_helper.dart';
@@ -39,7 +40,9 @@ class _MyPersonalWebsiteState extends State<MyPersonalWebsite> {
         darkTheme: CustomThemeData.darkTheme,
         theme: CustomThemeData.lightTheme,
         themeMode: notifier.currentAppTheme,
-        home: Container(
+        home: ChangeNotifierProvider(
+          create: (_) => HomePageNotifier(),
+          builder: _buildHomePage,
           child: HomePageWidget(),
         ),
         localizationsDelegates: [
@@ -53,5 +56,9 @@ class _MyPersonalWebsiteState extends State<MyPersonalWebsite> {
         ],
       ),
     );
+  }
+
+  Widget _buildHomePage(BuildContext context, Widget? child) {
+    return HomePageWidget();
   }
 }

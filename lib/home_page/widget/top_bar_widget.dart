@@ -35,17 +35,12 @@ class _TopBarWidgetState extends State<TopBarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: widget.pageSelected != PageEnum.home
-          ? Theme.of(context).colorScheme.background
-          : Colors.transparent,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _buildLogo(),
-          _buildNavItems(),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        _buildLogo(),
+        _buildNavItems(),
+      ],
     );
   }
 
