@@ -1,6 +1,4 @@
 class FirebaseAnalyticsHelper {
-  bool get _initialize => false;
-
   static const EASTER_EGG_FOUND = 'easter_egg_found';
   static const MAIL_HOME_TAP = 'contact_mail_home_tap';
   static const GITHUB_CONTACTS = 'github_contacts';
@@ -16,15 +14,11 @@ class FirebaseAnalyticsHelper {
     return _singleton;
   }
 
-  void logAppOpen() {
-  }
+  void logAppOpen() {}
 
-  void logEvent({required String name, Map<String, Object?>? parameters}) {
-  }
+  void logEvent({required String name, Map<String, Object?>? parameters}) {}
 
-  Future<void> initialize() async {
-  }
+  Future<void> initialize() async {}
 
-  void setCurrentScreen({required String screenName}) {
-  }
+  void setCurrentScreen({required String screenName}) {}
 }
