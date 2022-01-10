@@ -6,4 +6,4 @@ Hello world! Welcome to my new website. Please take a cup of coffee and enjoy ‚ù
 
 Web: flutter build web -t lib/environment/main.dart
 
-Current Flutter version used for the build: 2.8.1
+The Flutter version used is aligned with the stable branch of the Flutter framework.
