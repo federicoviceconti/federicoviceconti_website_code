@@ -27,5 +27,11 @@
   "contactsHeading": "Ciao, grazie per aver visitato il mio sito! In caso tu voglia contattarmi, usa uno dei seguenti recapiti:",
   "websiteMadeWith": "Website made with ❤️ and Flutter",
   "darkModeSelected": "Attiva light mode",
-  "lightModeSelected": "Attiva dark mode"
+  "lightModeSelected": "Attiva dark mode",
+  "sideProjects": "Altri progetti",
+  "projectTwitchDescription": "Wrapper per le nuove Twitch API, disponibile su pub.dev. Permette di recuperare e ricercare informazioni sui canali e media.",
+  "projectSliderDescription": "Crea slides da un file json. Questo strumento permette di creare una presentazione, la quale si adatta alle varie schermate.",
+  "projectCovidBotDescription": "Bot Telegram che permette di recuperare le ultime informazioni sul Covid-19..",
+  "projectJourneyDemoDescription": "Prototitpo di un journey planner, che utilizza l'algoritmo A*. Utilizzo delle API OpenCharge per recuperare i dati delle stazioni di ricarica.",
+  "projectCardStackDescription": "Uno stack di card personalizzabili, per le tue app Flutter"
 }

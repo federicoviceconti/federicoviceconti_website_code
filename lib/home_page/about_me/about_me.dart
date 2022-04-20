@@ -1,5 +1,9 @@
+import 'package:federicoviceconti_github_io/home_page/widget/cursor_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import 'link_text.dart';
 
 class AboutMeWidget extends StatefulWidget {
   @override
@@ -14,6 +18,7 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: SingleChildScrollView(
+            primary: false,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,6 +26,7 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
                 _buildHeadingText(),
                 _buildSubHeadingText(),
                 _buildExperienceSection(),
+                _buildProjectSection(),
                 _buildEducationSection(),
                 _buildCertificationSection(),
                 SizedBox(height: 20),
@@ -38,9 +44,9 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
       child: Text(
         AppLocalizations.of(context)!.aboutMe,
         style: Theme.of(context).textTheme.headline4!.copyWith(
-              fontWeight: FontWeight.bold,
-              fontSize: 32,
-            ),
+          fontWeight: FontWeight.bold,
+          fontSize: 32,
+        ),
       ),
     );
   }
@@ -53,9 +59,9 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
       child: Text(
         AppLocalizations.of(context)!.aboutMeSubtitle,
         style: Theme.of(context).textTheme.headline4!.copyWith(
-              fontWeight: FontWeight.w300,
-              fontSize: 18,
-            ),
+          fontWeight: FontWeight.w300,
+          fontSize: 18,
+        ),
       ),
     );
   }
@@ -90,7 +96,12 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
     );
   }
 
-  _buildSectionContent({String? header, String? content, String? year}) {
+  _buildSectionContent({
+    String? header,
+    String? content,
+    String? year,
+    LinkText? linkText,
+  }) {
     return Padding(
       padding: const EdgeInsets.only(top: 16.0),
       child: Column(
@@ -99,12 +110,13 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
           Text(
             header ?? '',
             style: Theme.of(context).textTheme.headline4!.copyWith(
-              fontSize: 20.0,
-            ),
+                  fontSize: 20.0,
+                ),
           ),
           SizedBox(height: 4),
           _buildYearOrEmpty(year),
-          _buildContent(content ?? '')
+          _buildContent(content ?? ''),
+          linkText != null ? _buildLink(linkText) : IgnorePointer(),
         ],
       ),
     );
@@ -113,14 +125,14 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
   Widget _buildContent(String content) {
     return content.isNotEmpty
         ? Padding(
-            padding: const EdgeInsets.only(top: 4.0),
-            child: Text(
-              content,
+      padding: const EdgeInsets.only(top: 4.0),
+      child: Text(
+        content,
               style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                fontSize: 14.0,
-              ),
+                    fontSize: 14.0,
+                  ),
             ),
-          )
+    )
         : SizedBox();
   }
 
@@ -138,6 +150,56 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
           header: AppLocalizations.of(context)!.vetryaExperienceTitle,
           content: AppLocalizations.of(context)!.vetryaExperienceContent,
           year: "2017 - 2018",
+        ),
+      ],
+    );
+  }
+
+  _buildProjectSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildHeadingSectionWithLine(
+            AppLocalizations.of(context)!.sideProjects),
+        _buildSectionContent(
+          header: "card_stack_widget (Flutter/Dart)",
+          content: AppLocalizations.of(context)!.projectCardStackDescription,
+          linkText: LinkText(
+            text: 'pub.dev/card_stack_widget',
+            link: 'https://pub.dev/packages/card_stack_widget',
+          ),
+        ),
+        _buildSectionContent(
+          header: "unofficial_twitch_open_api (Flutter/Dart)",
+          content: AppLocalizations.of(context)!.projectTwitchDescription,
+          linkText: LinkText(
+            text: 'pub.dev/unofficial_twitch_open_api',
+            link: 'https://pub.dev/packages/unofficial_twitch_open_api',
+          ),
+        ),
+        _buildSectionContent(
+          header: "flutter_slider (Flutter/Dart)",
+          content: AppLocalizations.of(context)!.projectSliderDescription,
+          linkText: LinkText(
+            text: 'github/flutter_slider',
+            link: 'https://github.com/federicoviceconti/flutter_slider',
+          ),
+        ),
+        _buildSectionContent(
+          header: "covid_bot (Flutter/Dart)",
+          content: AppLocalizations.of(context)!.projectCovidBotDescription,
+          linkText: LinkText(
+            text: 'github/covid_bot',
+            link: 'https://github.com/federicoviceconti/covid_bot',
+          ),
+        ),
+        _buildSectionContent(
+          header: "jouney_demo (Flutter/Dart)",
+          content: AppLocalizations.of(context)!.projectJourneyDemoDescription,
+          linkText: LinkText(
+            text: 'github/jouney_demo',
+            link: 'https://github.com/federicoviceconti/Journey-Demo',
+          ),
         ),
       ],
     );
@@ -191,11 +253,33 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
         Text(
           '($year)',
           style: Theme.of(context).textTheme.headline6!.copyWith(
-            fontSize: 12.0,
-          ),
+                fontSize: 12.0,
+              ),
         ),
         SizedBox(height: 6),
       ],
+    );
+  }
+
+  Widget _buildLink(LinkText linkText) {
+    return GestureDetector(
+      onTap: () async {
+        if (await canLaunch(linkText.link)) {
+          launch(linkText.link);
+        }
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(top: 4.0),
+        child: CursorWidget(
+          child: Text(
+            'Link ${linkText.text}',
+            style: Theme.of(context).textTheme.headline6!.copyWith(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+        ),
+      ),
     );
   }
 }

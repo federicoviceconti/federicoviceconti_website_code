@@ -8,7 +8,6 @@ import 'package:federicoviceconti_github_io/home_page/page_enum.dart';
 import 'package:federicoviceconti_github_io/home_page/who_am_i/who_am_i_widget.dart';
 import 'package:federicoviceconti_github_io/home_page/widget/top_bar_widget.dart';
 import 'package:federicoviceconti_github_io/utility/animation_helper.dart';
-import 'package:federicoviceconti_github_io/utility/html_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'widget/home_page_background_widget.dart';
@@ -33,8 +32,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   Widget _buildBody() {
-    final screenSize = MediaQuery.of(context).size;
-
     final stackPages = Stack(
       children: [
         _buildBackground(),
@@ -44,15 +41,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       ],
     );
 
-    final provider = Provider.of<HomePageNotifier>(context, listen: false);
-    final mouseRegion = MouseRegion(
-      onEnter: (_) => provider.onMouseEnter(),
-      onExit: (_) => provider.onMouseExit(MediaQuery.of(context).size),
-      onHover: (details) => provider.onMouseHover(details, screenSize),
-      child: stackPages,
-    );
-
-    return HtmlUtility.isMobile() ? stackPages : mouseRegion;
+    return stackPages;
   }
 
   Widget _buildBackground() {

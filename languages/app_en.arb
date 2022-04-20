@@ -6,7 +6,7 @@
   "helloIAm": "Hello, I'm Federico!\nAndroid developer, Flutter enthusiast",
   "mail": "viceconti.federico@gmail.com",
   "copiedWithEmoji": " copied 📋",
-  "aboutMeSubtitle": "Developer, lifelong learner and music lover. Born in '97. I lived in a little city of the south of Italy 🇮🇹, but now I'm based in Rome.\nI love mobile development, in particular Android. At the moment I'm using Flutter to build cross, lovely and functional app.",
+  "aboutMeSubtitle": "Developer, lifelong learner and music lover. Born in '97. I lived in a little city of the south of Italy 🇮🇹, but now I'm based in Rome.\nI fell in love with the Android mobile development. At the moment I'm using Flutter to build cross, lovely and functional apps.",
   "experience": "Experience",
   "nttExperienceTitle": "Mobile Developer @ NTT Data Italy",
   "nttExperienceContent": "Working in Mobile&Creative Technology. Clients: Enel X, Poste Italiane.\nApps developed: JuicePass, YoUrban, ForFriends, NoiDiPoste\nTechnologies & Tools: Flutter, Android w/ Java, Xamarin, Git, Jenkins, Jira",
@@ -27,5 +27,11 @@
   "contactsHeading": "Hi, thanks for visiting my personal website! If you want to reach me out, please use the following contacts:",
   "websiteMadeWith": "Website made with ❤️ and Flutter",
   "darkModeSelected": "Activate light mode",
-  "lightModeSelected": "Activate dark mode"
+  "lightModeSelected": "Activate dark mode",
+  "sideProjects": "Side projects",
+  "projectTwitchDescription": "Wrapper for the newest Twitch API, available on pub.dev. It returns information about channels, media, search and game.",
+  "projectSliderDescription": "Creates slides from a json file. This tool will show a presentation that adapts to every screen resolution.",
+  "projectCovidBotDescription": "Telegram Bot which get data from free API to show the latest update about COVID-19.",
+  "projectJourneyDemoDescription": "Prototype of journey planner using A* algorithm. Using OpenCharge API for retrieving CU data.",
+  "projectCardStackDescription": "A vertical dismissible and customizable stack of cards for a Flutter application."
 }

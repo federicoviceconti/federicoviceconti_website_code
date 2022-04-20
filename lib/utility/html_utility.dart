@@ -1,12 +1,4 @@
-import 'package:flutter/foundation.dart';
-
 class HtmlUtility {
-  static bool isMobile() {
-    return kIsWeb &&
-        (defaultTargetPlatform == TargetPlatform.iOS ||
-            defaultTargetPlatform == TargetPlatform.android);
-  }
-
   static void printAsciiArt() {
     print(''' 
 Hi! I'm Federico. SW Dev from Italy. I hope you're well :)
