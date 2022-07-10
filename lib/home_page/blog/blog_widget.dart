@@ -3,7 +3,6 @@ import 'package:federicoviceconti_github_io/home_page/blog/blog_notifier.dart';
 import 'package:federicoviceconti_github_io/home_page/widget/cursor_widget.dart';
 import 'package:federicoviceconti_github_io/utility/image_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -17,8 +16,8 @@ class _BlogWidgetState extends State<BlogWidget> with WidgetsBindingObserver {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance!.addObserver(this);
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<BlogNotifier>(
         context,
         listen: false,

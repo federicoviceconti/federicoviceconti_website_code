@@ -142,14 +142,19 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
       children: [
         _buildHeadingSectionWithLine(AppLocalizations.of(context)!.experience),
         _buildSectionContent(
+          header: AppLocalizations.of(context)!.windExperienceTitle,
+          content: AppLocalizations.of(context)!.windExperienceContent,
+          year: "Jun 2022 - Present",
+        ),
+        _buildSectionContent(
           header: AppLocalizations.of(context)!.nttExperienceTitle,
           content: AppLocalizations.of(context)!.nttExperienceContent,
-          year: "2018 - Present",
+          year: "Jul 2018 -  Jun 2022",
         ),
         _buildSectionContent(
           header: AppLocalizations.of(context)!.vetryaExperienceTitle,
           content: AppLocalizations.of(context)!.vetryaExperienceContent,
-          year: "2017 - 2018",
+          year: "Mar 2017 - Jul 2018",
         ),
       ],
     );

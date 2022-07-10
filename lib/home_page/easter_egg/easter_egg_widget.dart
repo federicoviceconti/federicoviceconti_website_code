@@ -22,8 +22,8 @@ class _EasterEggWidgetState extends State<EasterEggWidget> with WidgetsBindingOb
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       int incrementTop = 1;
       int incrementLeft = 1;
 
