@@ -23,8 +23,8 @@ class HomePageNotifier extends ChangeNotifier {
 
   DateTime? _easterEggStarted;
 
-  final PageController _pageController =
-      PageController(initialPage: PageEnum.home.pageIndex ?? 0, viewportFraction: 0.9999);
+  final PageController _pageController = PageController(
+      initialPage: PageEnum.home.pageIndex ?? 0, viewportFraction: 0.9999);
 
   void init() async {
     final info = await PackageInfo.fromPlatform();
@@ -97,9 +97,7 @@ class HomePageNotifier extends ChangeNotifier {
 
   void _showRemainingStepTouchLogo(BuildContext context) {
     Fluttertoast.showToast(
-      msg: AppLocalizations.of(context)!
-          .touchLogo
-          .replaceAll('{0}', _touchLogo.toString()),
+      msg: AppLocalizations.of(context)!.touchLogo(_touchLogo),
       gravity: ToastGravity.BOTTOM,
       toastLength: Toast.LENGTH_SHORT,
       backgroundColor: Theme.of(context).colorScheme.primary,

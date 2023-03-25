@@ -35,7 +35,7 @@ class _BlogWidgetState extends State<BlogWidget> with WidgetsBindingObserver {
             padding: const EdgeInsets.only(top: 100.0),
             child: Text(
               AppLocalizations.of(context)!.blog,
-              style: Theme.of(context).textTheme.headline4!.copyWith(
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                     fontWeight: FontWeight.bold,
                     fontSize: 32,
                   ),
@@ -82,7 +82,7 @@ class _BlogWidgetState extends State<BlogWidget> with WidgetsBindingObserver {
             leading: _buildImage(item.imageUrl),
             title: Text(
               item.title,
-              style: Theme.of(context).textTheme.headline4!.copyWith(
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                     fontSize: 18.0,
                     fontWeight: FontWeight.w700,
                   ),

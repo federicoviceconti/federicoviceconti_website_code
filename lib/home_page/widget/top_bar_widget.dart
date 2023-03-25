@@ -98,7 +98,7 @@ class _TopBarWidgetState extends State<TopBarWidget> {
               children: [
                 Text(
                   text,
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 SizedBox(height: 4.0),
                 _buildUnderlineNav(

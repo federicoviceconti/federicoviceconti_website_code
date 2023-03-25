@@ -82,7 +82,7 @@ class _PopupMenuHomeState extends State<PopupMenuHome> {
         SizedBox(width: 8),
         Text(
           text,
-          style: Theme.of(context).textTheme.headline6!.copyWith(fontSize: 14),
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 14),
         ),
       ],
     );

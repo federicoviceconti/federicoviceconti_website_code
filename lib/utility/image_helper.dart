@@ -10,13 +10,29 @@ class ImageHelper {
     );
   }
 
-  static getSvg(String name, {double? width, BoxFit? fit, Color? color}) {
+  static Widget getSvg(
+    String name, {
+    double? width,
+    BoxFit? fit,
+    Color? color,
+  }) {
+    if (color != null) {
+      return SvgPicture.asset(
+        'assets/svg/$name.svg',
+        width: width,
+        fit: fit ?? BoxFit.cover,
+        theme: SvgTheme(currentColor: color),
+        colorFilter: ColorFilter.mode(
+          color,
+          BlendMode.screen,
+        ),
+      );
+    }
+
     return SvgPicture.asset(
       'assets/svg/$name.svg',
       width: width,
       fit: fit ?? BoxFit.cover,
-      color: color,
-      colorBlendMode: BlendMode.screen,
     );
   }
 }

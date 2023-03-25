@@ -1,7 +1,7 @@
 import 'package:federicoviceconti_github_io/home_page/widget/cursor_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'link_text.dart';
 
@@ -43,7 +43,7 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
       padding: const EdgeInsets.only(top: 100.0),
       child: Text(
         AppLocalizations.of(context)!.aboutMe,
-        style: Theme.of(context).textTheme.headline4!.copyWith(
+        style: Theme.of(context).textTheme.headlineMedium!.copyWith(
           fontWeight: FontWeight.bold,
           fontSize: 32,
         ),
@@ -58,7 +58,7 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
       ),
       child: Text(
         AppLocalizations.of(context)!.aboutMeSubtitle,
-        style: Theme.of(context).textTheme.headline4!.copyWith(
+        style: Theme.of(context).textTheme.headlineMedium!.copyWith(
           fontWeight: FontWeight.w300,
           fontSize: 18,
         ),
@@ -78,7 +78,7 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
             headText,
             style: Theme.of(context)
                 .textTheme
-                .headline4!
+                .headlineMedium!
                 .copyWith(fontSize: 26.0, fontWeight: FontWeight.w700),
           ),
           Expanded(
@@ -109,7 +109,7 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
         children: [
           Text(
             header ?? '',
-            style: Theme.of(context).textTheme.headline4!.copyWith(
+            style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                   fontSize: 20.0,
                 ),
           ),
@@ -128,7 +128,7 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
       padding: const EdgeInsets.only(top: 4.0),
       child: Text(
         content,
-              style: Theme.of(context).textTheme.bodyText1!.copyWith(
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     fontSize: 14.0,
                   ),
             ),
@@ -257,7 +257,7 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
       children: [
         Text(
           '($year)',
-          style: Theme.of(context).textTheme.headline6!.copyWith(
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontSize: 12.0,
               ),
         ),
@@ -269,8 +269,8 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
   Widget _buildLink(LinkText linkText) {
     return GestureDetector(
       onTap: () async {
-        if (await canLaunch(linkText.link)) {
-          launch(linkText.link);
+        if (await canLaunchUrlString(linkText.link)) {
+          launchUrlString(linkText.link);
         }
       },
       child: Padding(
@@ -278,7 +278,7 @@ class AboutMeWidgetState extends State<AboutMeWidget> {
         child: CursorWidget(
           child: Text(
             'Link ${linkText.text}',
-            style: Theme.of(context).textTheme.headline6!.copyWith(
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontSize: 14.0,
                   fontWeight: FontWeight.bold,
                 ),

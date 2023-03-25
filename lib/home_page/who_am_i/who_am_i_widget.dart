@@ -44,7 +44,7 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
 
     return Text(
       welcomeText,
-      style: Theme.of(context).textTheme.headline4!.copyWith(
+      style: Theme.of(context).textTheme.headlineMedium!.copyWith(
             fontWeight: FontWeight.bold,
             fontSize: Proportion.getProportionalValueOnLongSize(
               context,
@@ -65,8 +65,8 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
           onTap: _onTapMail,
           child: CursorWidget(
             child: Text(
-              AppLocalizations.of(context)!.sayHelloToMail,
-              style: Theme.of(context).textTheme.bodyText1!.copyWith(
+              AppLocalizations.of(context)!.sayHelloToMail("👋"),
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     height: 1.5,
                   ),
             ),
@@ -106,13 +106,13 @@ class _WhoAmIWidgetState extends State<WhoAmIWidget> {
             textAlign: TextAlign.right,
             text: TextSpan(
               text: AppLocalizations.of(context)!.mail,
-              style: Theme.of(context).textTheme.bodyText1!.copyWith(
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
               children: [
                 TextSpan(
-                  text: AppLocalizations.of(context)!.copiedWithEmoji,
-                  style: Theme.of(context).textTheme.bodyText1,
+                  text: AppLocalizations.of(context)!.copiedWithEmoji("📋"),
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ],
             ),

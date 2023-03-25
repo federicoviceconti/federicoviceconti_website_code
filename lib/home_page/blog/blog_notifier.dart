@@ -1,6 +1,6 @@
 import 'package:federicoviceconti_github_io/utility/firebase_analytics_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'blog_item.dart';
 
@@ -37,8 +37,8 @@ class BlogNotifier extends ChangeNotifier {
   void onBlogItemTap(int index) async {
     final urlToOpen = _blogItems[index].path;
 
-    if(await canLaunch(urlToOpen ?? '')) {
-      launch(urlToOpen!);
+    if(await canLaunchUrlString(urlToOpen ?? '')) {
+      launchUrlString(urlToOpen!);
 
       FirebaseAnalyticsHelper().logEvent(
         name: 'tap_blog_item',

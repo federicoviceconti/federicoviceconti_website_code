@@ -5,17 +5,17 @@ class CustomThemeData {
     scaffoldBackgroundColor: Colors.white,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: TextTheme(
-      headline6: TextStyle(
+      bodyLarge: TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.normal,
       ),
-      headline4: TextStyle(
+      titleLarge: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.normal,
+      ),
+      headlineMedium: TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.w600,
-      ),
-      bodyText1: TextStyle(
-        color: Colors.black,
-        fontWeight: FontWeight.normal,
       ),
     ),
     colorScheme: ColorScheme.light(
@@ -32,18 +32,18 @@ class CustomThemeData {
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: Colors.black,
     textTheme: TextTheme(
-      headline6: TextStyle(
+      bodyLarge: TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.normal,
       ),
-      headline4: TextStyle(
+      titleLarge: TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.normal,
+      ),
+      headlineMedium: TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.w600
       ),
-      bodyText1: TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.normal,
-      )
     ),
     colorScheme: ColorScheme.light(
       primary: Colors.white,
