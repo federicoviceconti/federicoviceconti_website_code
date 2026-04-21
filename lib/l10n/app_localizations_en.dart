@@ -134,7 +134,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get experienceOneSummary =>
-      'Delivering production mobile features, collaborating with cross-functional teams, and improving release reliability and UX consistency.';
+      'Development and maintenance of the WindTre app, and migration of the X Cube and Very Mobile apps to Flutter, ensuring their continuous evolution.';
 
   @override
   String get experienceTwoRole => 'Digital Engineer · NTT DATA';
@@ -144,7 +144,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get experienceTwoSummary =>
-      'Development of native and hybrid Android applications (Xamarin, Flutter), along with building and maintaining web portals using React';
+      'Development of native and hybrid Android applications (Xamarin, Flutter), along with building and maintaining web portals using React.';
 
   @override
   String get experienceThreeRole => 'Software Developer · Vetrya';

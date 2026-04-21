@@ -329,7 +329,7 @@ abstract class AppLocalizations {
   /// No description provided for @experienceOneSummary.
   ///
   /// In en, this message translates to:
-  /// **'Delivering production mobile features, collaborating with cross-functional teams, and improving release reliability and UX consistency.'**
+  /// **'Development and maintenance of the WindTre app, and migration of the X Cube and Very Mobile apps to Flutter, ensuring their continuous evolution.'**
   String get experienceOneSummary;
 
   /// No description provided for @experienceTwoRole.
@@ -347,7 +347,7 @@ abstract class AppLocalizations {
   /// No description provided for @experienceTwoSummary.
   ///
   /// In en, this message translates to:
-  /// **'Development of native and hybrid Android applications (Xamarin, Flutter), along with building and maintaining web portals using React'**
+  /// **'Development of native and hybrid Android applications (Xamarin, Flutter), along with building and maintaining web portals using React.'**
   String get experienceTwoSummary;
 
   /// No description provided for @experienceThreeRole.
