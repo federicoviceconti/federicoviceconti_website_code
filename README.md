@@ -1,9 +1,19 @@
 # federicoviceconti_github_io
 
-Hello world! Welcome to my new website. Please take a cup of coffee and enjoy ❤
+Personal portfolio website rebuilt with Flutter, designed specifically for the web.
 
-## Make a build
+## Development (web only)
 
-Web: flutter build web -t lib/environment/main.dart
+Run locally:
 
-The Flutter version used is aligned with the stable branch of the Flutter framework.
+`flutter run -d chrome`
+
+Build for production:
+
+`flutter build web`
+
+## Notes
+
+- The project intentionally targets Flutter Web only.
+- Localization is available in English and Italian.
+- Light and dark themes are both supported.

@@ -2,7 +2,7 @@
     "version": "0.0.1",
     "configurations": [
       {
-        "name": "Federico Viceconti's website",
+        "name": "chrome",
         "type": "dart",
         "request": "launch",
         "program": "lib/environment/main.dart",

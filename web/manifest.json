@@ -1,11 +1,11 @@
 {
-    "name": "federicoviceconti_github_io",
-    "short_name": "federicoviceconti_github_io",
+    "name": "Federico Viceconti Portfolio",
+    "short_name": "Viceconti",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "Hello world! Welcome to my new website. Please take a cup of coffee and enjoy ❤",
+    "background_color": "#0B1220",
+    "theme_color": "#2557D6",
+    "description": "Professional Flutter developer portfolio in English and Italian.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
